@@ -1,0 +1,292 @@
+/* ============ Responsive — Media Queries Only ============ */
+
+/* ============ Tablet — max 991px ============ */
+@media (max-width: 61.9375rem) {
+
+  .topbar {
+    padding: 0.5rem 2rem;
+  }
+
+  .topbar--solid {
+    padding: 0.5rem 2rem;
+  }
+
+  .topbar__nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    background: var(--dark);
+    z-index: 99;
+  }
+
+  .topbar__nav--open {
+    display: flex;
+  }
+
+  .topbar__nav .topbar__link {
+    font-size: 1.1rem;
+  }
+
+  .topbar__toggle {
+    display: block;
+    z-index: 101;
+  }
+
+  .topbar__toggle--open span:nth-child(1) {
+    top: 50%;
+    transform: rotate(45deg);
+  }
+
+  .topbar__toggle--open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .topbar__toggle--open span:nth-child(3) {
+    bottom: 50%;
+    transform: rotate(-45deg);
+  }
+
+  .hero__left {
+    width: 65%;
+    padding-left: 2rem;
+  }
+
+  .hero__h1 {
+    font-size: 3rem;
+  }
+
+  .hero__side {
+    right: 2rem;
+  }
+
+  .about {
+    padding: 6rem 0 4rem;
+  }
+
+  .about__intro {
+    font-size: 2.2rem;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about__divider {
+    display: none;
+  }
+
+  .about__photo-side {
+    justify-content: center;
+  }
+
+  .adv__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .adv__grid .adv-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
+  }
+
+  .cta-block__h {
+    font-size: 2.2rem;
+  }
+}
+
+/* ============ Mobile — max 767px ============ */
+@media (max-width: 47.9375rem) {
+
+  .topbar {
+    padding: 0.5rem 1.25rem;
+  }
+
+  .topbar--solid {
+    padding: 0.5rem 1.25rem;
+  }
+
+  .topbar__logo img {
+    height: 5rem;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero__left {
+    width: 100%;
+    max-width: 100%;
+    padding: 8rem 1.25rem 3rem;
+  }
+
+  .hero__h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero__desc {
+    font-size: 0.92rem;
+  }
+
+  .hero__side {
+    display: none;
+  }
+
+  .hero__fade {
+    background:
+      linear-gradient(
+        180deg,
+        var(--dark) 0%,
+        rgba(5, 8, 16, 0.85) 25%,
+        rgba(5, 8, 16, 0.6) 50%,
+        rgba(5, 8, 16, 0.85) 75%,
+        var(--dark) 100%
+      );
+  }
+
+  .marquee__item {
+    font-size: 0.95rem;
+    padding: 0 2rem;
+    gap: 2rem;
+  }
+
+  .about {
+    padding: 4rem 0 3rem;
+  }
+
+  .about__intro {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+
+  .about__intro::before {
+    font-size: 4rem;
+    top: -1.5rem;
+    left: -0.75rem;
+  }
+
+  .about__card {
+    max-width: 18rem;
+  }
+
+  .about__name {
+    font-size: 1.6rem;
+  }
+
+  .sec-h2 {
+    font-size: 1.8rem;
+  }
+
+  .stat__num {
+    font-size: 2.4rem;
+  }
+
+  .stat::after {
+    display: none;
+  }
+
+  .stats {
+    padding: 3rem 0;
+  }
+
+  .adv {
+    padding: 4rem 0;
+  }
+
+  .adv__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .adv__grid .adv-card:last-child {
+    grid-column: auto;
+    max-width: 100%;
+  }
+
+  .adv-card__content {
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-block {
+    padding: 4rem 0;
+  }
+
+  .cta-block__h {
+    font-size: 1.8rem;
+  }
+
+  .cta-block__p {
+    font-size: 0.92rem;
+  }
+
+  .ft .row {
+    text-align: center;
+  }
+
+  .ft .d-flex {
+    justify-content: center;
+  }
+
+  .ft__logo img {
+    height: 4.5rem;
+  }
+}
+
+/* ============ Petit mobile — max 480px ============ */
+@media (max-width: 30rem) {
+
+  .topbar__logo img {
+    height: 4rem;
+  }
+
+  .hero__left {
+    padding: 7rem 1rem 2.5rem;
+  }
+
+  .hero__h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero__desc {
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .hero__tag {
+    font-size: 0.6rem;
+  }
+
+  .about__intro {
+    font-size: 1.5rem;
+  }
+
+  .about__name {
+    font-size: 1.4rem;
+  }
+
+  .about__card {
+    max-width: 15rem;
+  }
+
+  .btn-corners {
+    font-size: 0.7rem;
+    padding: 0.85rem 1.75rem;
+  }
+
+  .sec-h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-block__h {
+    font-size: 1.5rem;
+  }
+}
