@@ -141,6 +141,31 @@
   .pf-quality {
     padding: 5rem 0;
   }
+
+  .apr {
+    padding: 6rem 0 4rem;
+  }
+
+  .apr__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .apr__photo-col {
+    justify-content: center;
+  }
+
+  .apr-values {
+    padding: 5rem 0;
+  }
+
+  .apr-journey {
+    padding: 5rem 0;
+  }
+
+  .apr-mission {
+    padding: 5rem 0;
+  }
 }
 
 /* ============ Mobile — max 767px ============ */
@@ -362,6 +387,30 @@
 
   .pf-quality__score {
     font-size: 2.2rem;
+  }
+
+  .apr {
+    padding: 4rem 0 3rem;
+  }
+
+  .apr-values {
+    padding: 4rem 0;
+  }
+
+  .apr-values__header {
+    margin-bottom: 3rem;
+  }
+
+  .apr-journey {
+    padding: 4rem 0;
+  }
+
+  .apr-journey__header {
+    margin-bottom: 3rem;
+  }
+
+  .apr-mission {
+    padding: 4rem 0;
   }
 
   .ft .row {

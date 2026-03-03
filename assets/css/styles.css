@@ -1443,3 +1443,57 @@ a:hover {
   font-weight: 400;
   margin: 0;
 }
+
+/* ============ Notre approche (About Page) ============ */
+.apr {
+  padding: 8rem 0 6rem;
+}
+
+.apr__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.apr__photo-col {
+  display: flex;
+  justify-content: center;
+}
+
+.apr__text-col {
+  padding-top: 0.5rem;
+}
+
+.apr-values {
+  padding: 7rem 0;
+  border-top: 0.0625rem solid var(--border);
+}
+
+.apr-values__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.apr-values__header .sec-line {
+  margin: 1.25rem auto 0;
+}
+
+.apr-journey {
+  padding: 7rem 0;
+  border-top: 0.0625rem solid var(--border);
+}
+
+.apr-journey__header {
+  text-align: center;
+  margin-bottom: 4.5rem;
+}
+
+.apr-journey__header .sec-line {
+  margin: 1.25rem auto 0;
+}
+
+.apr-mission {
+  padding: 7rem 0;
+  border-top: 0.0625rem solid var(--border);
+}
