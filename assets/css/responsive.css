@@ -101,6 +101,26 @@
   .cta-block__h {
     font-size: 2.2rem;
   }
+
+  .pagehero {
+    padding: 10rem 0 5rem;
+  }
+
+  .pagehero__h1 {
+    font-size: 2.6rem;
+  }
+
+  .svc {
+    padding: 5rem 0;
+  }
+
+  .svc__grid {
+    gap: 1.5rem;
+  }
+
+  .process {
+    padding: 5rem 0;
+  }
 }
 
 /* ============ Mobile — max 767px ============ */
@@ -228,6 +248,52 @@
     font-size: 0.92rem;
   }
 
+  .pagehero {
+    padding: 8rem 0 3.5rem;
+  }
+
+  .pagehero__h1 {
+    font-size: 2rem;
+  }
+
+  .pagehero__desc {
+    font-size: 0.92rem;
+  }
+
+  .svc {
+    padding: 4rem 0;
+  }
+
+  .svc__header {
+    margin-bottom: 3rem;
+  }
+
+  .svc__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .svc-card__content {
+    padding: 2rem 1.5rem;
+  }
+
+  .svc-card__num {
+    font-size: 2rem;
+  }
+
+  .process {
+    padding: 4rem 0;
+  }
+
+  .process__header {
+    margin-bottom: 3rem;
+  }
+
+  .process__step {
+    padding-left: 2.75rem;
+    padding-bottom: 2.5rem;
+  }
+
   .ft .row {
     text-align: center;
   }
@@ -288,5 +354,26 @@
 
   .cta-block__h {
     font-size: 1.5rem;
+  }
+
+  .pagehero {
+    padding: 7rem 0 2.5rem;
+  }
+
+  .pagehero__h1 {
+    font-size: 1.7rem;
+  }
+
+  .pagehero__desc {
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .svc-card__content {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .process__step {
+    padding-left: 2.25rem;
   }
 }
