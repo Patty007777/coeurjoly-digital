@@ -166,6 +166,14 @@
   .apr-mission {
     padding: 5rem 0;
   }
+
+  .ct {
+    padding: 5rem 0;
+  }
+
+  .ct__grid {
+    gap: 3rem;
+  }
 }
 
 /* ============ Mobile — max 767px ============ */
@@ -413,6 +421,23 @@
     padding: 4rem 0;
   }
 
+  .ct {
+    padding: 4rem 0;
+  }
+
+  .ct__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .ct__form {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .ct__form-title {
+    font-size: 1.2rem;
+  }
+
   .ft .row {
     text-align: center;
   }
@@ -524,5 +549,14 @@
   .pf-quality__label {
     font-size: 0.65rem;
     letter-spacing: 0.0625rem;
+  }
+
+  .ct__form {
+    padding: 2rem 1.25rem;
+  }
+
+  .ct__detail-icon {
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }
