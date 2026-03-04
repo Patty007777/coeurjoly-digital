@@ -72,3 +72,27 @@
     co.observe(n);
   });
 })();
+// ============ Legal nav — surlignage de section active ============
+(function () {
+  var navLinks = document.querySelectorAll('.legal__nav-link');
+  if (!navLinks.length) return;
+
+  var targets = [];
+  navLinks.forEach(function (link) {
+    var id = link.getAttribute('href').replace('#', '');
+    var el = document.getElementById(id);
+    if (el) targets.push({ el: el, link: link });
+  });
+
+  var ob = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function (l) { l.classList.remove('legal__nav-link--on'); });
+        var match = targets.find(function (t) { return t.el === entry.target; });
+        if (match) match.link.classList.add('legal__nav-link--on');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+  targets.forEach(function (t) { ob.observe(t.el); });
+})();
