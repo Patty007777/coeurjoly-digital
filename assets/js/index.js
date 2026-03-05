@@ -96,3 +96,118 @@
 
   targets.forEach(function (t) { ob.observe(t.el); });
 })();
+
+// ============ Soumission — Formulaire multi-&eacute;tapes ============
+(function () {
+  var form = document.getElementById('soumission-form');
+  if (!form) return;
+
+  var panels = form.querySelectorAll('.sm__panel');
+  var steps = document.querySelectorAll('.sm__step');
+  var progress = document.getElementById('sm-progress');
+  var btnPrev = document.getElementById('sm-prev');
+  var btnNext = document.getElementById('sm-next');
+  var btnSubmit = document.getElementById('sm-submit');
+  var current = 0;
+
+  function showStep(n) {
+    panels.forEach(function (p, i) {
+      p.classList.toggle('sm__panel--on', i === n);
+    });
+
+    steps.forEach(function (s, i) {
+      s.classList.toggle('sm__step--on', i === n);
+      s.classList.toggle('sm__step--done', i < n);
+      if (i === n) {
+        s.setAttribute('aria-current', 'step');
+      } else {
+        s.removeAttribute('aria-current');
+      }
+    });
+
+    if (progress) {
+      progress.setAttribute('aria-valuenow', n + 1);
+    }
+
+    var isFirst = n === 0;
+    var isLast = n === panels.length - 1;
+
+    btnPrev.style.display = isFirst ? 'none' : 'inline-flex';
+    btnNext.style.display = isLast ? 'none' : 'inline-flex';
+    btnSubmit.style.display = isLast ? 'inline-flex' : 'none';
+
+    current = n;
+  }
+
+  function validatePanel(panel) {
+    var inputs = panel.querySelectorAll('[required]');
+    var valid = true;
+
+    inputs.forEach(function (input) {
+      var isEmpty = false;
+
+      if (input.type === 'checkbox' || input.type === 'radio') {
+        var group = panel.querySelectorAll('input[name="' + input.name + '"]');
+        var checked = Array.prototype.some.call(group, function (i) { return i.checked; });
+        if (!checked) {
+          isEmpty = true;
+        }
+      } else {
+        isEmpty = !input.value.trim();
+      }
+
+      if (isEmpty) {
+        input.classList.add('sm__input--error');
+        valid = false;
+      } else {
+        input.classList.remove('sm__input--error');
+      }
+    });
+
+    return valid;
+  }
+
+  btnNext.addEventListener('click', function () {
+    if (validatePanel(panels[current])) {
+      showStep(current + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  btnPrev.addEventListener('click', function () {
+    showStep(current - 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Retirer l'erreur au premier keystroke
+  form.addEventListener('input', function (e) {
+    if (e.target.classList.contains('sm__input--error')) {
+      e.target.classList.remove('sm__input--error');
+    }
+  });
+
+  form.addEventListener('change', function (e) {
+    if (e.target.classList.contains('sm__input--error')) {
+      e.target.classList.remove('sm__input--error');
+    }
+  });
+
+  // R&eacute;v&eacute;lation du champ URL selon le bouton radio
+  var radioOui = document.getElementById('site-oui');
+  var radioNon = document.getElementById('site-non');
+  var urlReveal = document.getElementById('sm-url-reveal');
+
+  if (radioOui && urlReveal) {
+    radioOui.addEventListener('change', function () {
+      urlReveal.classList.add('sm__url-reveal--on');
+    });
+  }
+
+  if (radioNon && urlReveal) {
+    radioNon.addEventListener('change', function () {
+      urlReveal.classList.remove('sm__url-reveal--on');
+    });
+  }
+
+  showStep(0);
+})();

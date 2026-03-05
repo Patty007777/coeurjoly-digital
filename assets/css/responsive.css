@@ -626,3 +626,100 @@
     padding: 1.25rem 1.25rem;
   }
 }
+
+/* ============ &Agrave; int&eacute;grer dans responsive.css ============
+   Coller chaque bloc dans le @media correspondant d&eacute;j&agrave; existant
+   ======================================================= */
+
+/* Dans @media (max-width: 61.9375rem) — Tablet */
+
+.sm {
+  padding: 4rem 0 5rem;
+}
+
+.ct-options {
+  padding: 0 0 5rem;
+}
+
+.ct-options__grid {
+  gap: 1.25rem;
+}
+
+.ct-option {
+  padding: 2.5rem 2rem;
+}
+
+/* Dans @media (max-width: 47.9375rem) — Mobile */
+
+.sm {
+  padding: 3.5rem 0 4rem;
+}
+
+.sm__form {
+  padding: 2.25rem 1.5rem 2rem;
+}
+
+.sm__legend {
+  font-size: 1.25rem;
+}
+
+.sm__checks {
+  grid-template-columns: 1fr;
+}
+
+.sm__radios {
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.sm__radio {
+  padding: 0.75rem 1.25rem;
+}
+
+.sm__radio-text {
+  white-space: normal;
+}
+
+.ct-options {
+  padding: 0 0 4rem;
+}
+
+.ct-options__grid {
+  grid-template-columns: 1fr;
+}
+
+.ct-option {
+  padding: 2.25rem 1.75rem;
+}
+
+.ct-option__h {
+  font-size: 1.35rem;
+}
+
+/* Dans @media (max-width: 30rem) — Petit mobile */
+
+.sm__progress {
+  gap: 0;
+}
+
+.sm__step-line {
+  min-width: 1.25rem;
+  max-width: 2.5rem;
+}
+
+.sm__step-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.06rem;
+}
+
+.sm__step-num {
+  width: 1.875rem;
+  height: 1.875rem;
+  font-size: 0.7rem;
+}
+
+.sm__next,
+.sm__submit {
+  padding: 0.875rem 1.5rem;
+  font-size: 0.72rem;
+}
