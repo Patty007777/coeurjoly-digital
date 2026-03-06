@@ -11,8 +11,8 @@
   --border-hover: rgba(92, 160, 176, 0.35);
   --text: #eef0f2;
   --text-warm: #d8d0c4;
-  --text-dim: #c4c9d2;
-  --text-muted: #a0a8b8;
+  --text-dim: #d0d4dc;
+  --text-muted: #b8bfcc;
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Inter', 'Segoe UI', sans-serif;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -1892,6 +1892,156 @@ a:hover {
   line-height: 1.6;
 }
 
+/* ============ Carrousel t&eacute;moignages ============ */
+.testi {
+  padding: 5rem 0;
+}
+
+.testi__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.testi__header .sec-line {
+  margin: 1.25rem auto 0;
+}
+
+.testi__stage {
+  overflow: hidden;
+  position: relative;
+}
+
+.testi__track {
+  position: relative;
+  min-height: 14rem;
+}
+
+.testi__card {
+  position: absolute;
+  inset: 0;
+  padding: 3rem 3.5rem;
+  background: var(--dark-card);
+  border: 0.0625rem solid var(--border);
+  will-change: transform, opacity;
+}
+
+.testi__card:first-child {
+  position: relative;
+}
+
+.testi__card:hover {
+  border-color: var(--border-hover);
+}
+
+.testi__quote {
+  display: block;
+  font-family: var(--serif);
+  font-size: 5rem;
+  line-height: 0.8;
+  color: var(--accent);
+  opacity: 0.25;
+  margin-bottom: 1.25rem;
+  user-select: none;
+}
+
+.testi__text {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.9;
+  max-width: 54rem;
+  margin: 0 0 2rem;
+  font-style: italic;
+}
+
+.testi__author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.testi__name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.05rem;
+}
+
+.testi__biz {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 400;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+.testi__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.testi__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  border: 0.0625rem solid rgba(92, 160, 176, 0.45);
+  background: rgba(92, 160, 176, 0.07);
+  color: var(--accent-soft);
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  flex-shrink: 0;
+}
+
+.testi__btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.testi__btn:hover {
+  border-color: var(--accent);
+  color: #fff;
+  background: rgba(92, 160, 176, 0.18);
+}
+
+.testi__btn:focus-visible {
+  outline: 0.125rem solid var(--accent);
+  outline-offset: 0.25rem;
+}
+
+.testi__dots {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.testi__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(92, 160, 176, 0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.testi__dot--on {
+  background: var(--accent);
+  transform: scale(1.5);
+}
+
+.testi__dot:focus-visible {
+  outline: 0.125rem solid var(--accent);
+  outline-offset: 0.25rem;
+}
+
 /* ============ Mentions légales & Confidentialité ============ */
 .legal {
   padding: 7rem 0 6rem;
@@ -2288,5 +2438,3 @@ a:hover {
   background: var(--accent);
   opacity: 0.55;
 }
-
-/* Ligne de séparation après les cartes */

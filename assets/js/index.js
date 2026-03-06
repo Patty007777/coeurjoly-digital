@@ -211,3 +211,80 @@
 
   showStep(0);
 })();
+
+// ============ Carrousel témoignages ============
+(function () {
+  var stage = document.querySelector('.testi__stage');
+  if (!stage) return;
+
+  var cards    = Array.prototype.slice.call(stage.querySelectorAll('.testi__card'));
+  var dots     = Array.prototype.slice.call(document.querySelectorAll('.testi__dot'));
+  var tPrev    = document.querySelector('.testi__btn--prev');
+  var tNext    = document.querySelector('.testi__btn--next');
+  var current  = 0;
+  var total    = cards.length;
+  var animating = false;
+
+  function goTo(next, dir) {
+    if (animating || next === current) return;
+    animating = true;
+
+    var incoming = cards[next];
+    var outgoing = cards[current];
+
+    // Positionner la carte entrante du bon côté
+    incoming.style.transition = 'none';
+    incoming.style.transform  = 'translateX(' + (dir > 0 ? '100%' : '-100%') + ')';
+    incoming.style.opacity    = '1';
+    incoming.setAttribute('aria-hidden', 'false');
+
+    // Forcer le reflow
+    incoming.getBoundingClientRect();
+
+    // Animer les deux cartes
+    var dur = '0.5s';
+    var ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+    outgoing.style.transition = 'transform ' + dur + ' ' + ease + ', opacity ' + dur + ' ' + ease;
+    outgoing.style.transform  = 'translateX(' + (dir > 0 ? '-100%' : '100%') + ')';
+    outgoing.style.opacity    = '0';
+
+    incoming.style.transition = 'transform ' + dur + ' ' + ease + ', opacity ' + dur + ' ' + ease;
+    incoming.style.transform  = 'translateX(0)';
+
+    dots.forEach(function (d, i) {
+      d.classList.toggle('testi__dot--on', i === next);
+      d.setAttribute('aria-selected', i === next ? 'true' : 'false');
+    });
+
+    current = next;
+
+    setTimeout(function () {
+      outgoing.setAttribute('aria-hidden', 'true');
+      animating = false;
+    }, 520);
+  }
+
+  // Init : positionner toutes les cartes sauf la première
+  cards.forEach(function (c, i) {
+    if (i !== 0) {
+      c.style.transform = 'translateX(100%)';
+      c.style.opacity   = '0';
+      c.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  if (tPrev) tPrev.addEventListener('click', function () {
+    goTo((current - 1 + total) % total, 1);
+  });
+  if (tNext) tNext.addEventListener('click', function () {
+    goTo((current + 1) % total, -1);
+  });
+
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () {
+      var idx = parseInt(d.getAttribute('data-index'));
+      goTo(idx, idx > current ? 1 : -1);
+    });
+  });
+})();
