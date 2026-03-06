@@ -78,12 +78,8 @@ a:hover {
 }
 
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @property --border-angle {
@@ -106,6 +102,63 @@ a:hover {
 .rv--on {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ============ Polices serif — base commune ============ */
+.hero__h1,
+.pagehero__h1,
+.about__intro,
+.about__name,
+.about__label,
+.sec-h2,
+.cta-block__h,
+.ct-cta__h,
+.adv-card__h,
+.adv-card__num,
+.svc-card__h,
+.svc-card__num,
+.stat__num,
+.pf-card__h,
+.pf-card--feat .pf-card__h,
+.pf-quality__score,
+.process__h,
+.ct-cta__num,
+.ct__detail-label,
+.ct__form-title,
+.legal__h3,
+.sm__legend {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+
+/* Italique accent — commun à plusieurs titres */
+.hero__h1 i,
+.pagehero__h1 i,
+.cta-block__h i,
+.ct-cta__h i {
+  font-style: italic;
+  color: var(--accent-soft);
+}
+
+/* Texte corps — pattern commun aux cartes */
+.adv-card__p,
+.svc-card__p,
+.process__p,
+.pf-card__p {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+/* Centrage de .sec-line dans les en-têtes de sections */
+.adv__header .sec-line,
+.svc__header .sec-line,
+.process__header .sec-line,
+.pf__header .sec-line,
+.apr-values__header .sec-line,
+.apr-journey__header .sec-line {
+  margin: 1.25rem auto 0;
 }
 
 /* ============ NAV ============ */
@@ -235,18 +288,9 @@ a:hover {
   transition: all 0.3s;
 }
 
-.topbar__toggle span:nth-child(1) {
-  top: 0;
-}
-
-.topbar__toggle span:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.topbar__toggle span:nth-child(3) {
-  bottom: 0;
-}
+.topbar__toggle span:nth-child(1) { top: 0; }
+.topbar__toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.topbar__toggle span:nth-child(3) { bottom: 0; }
 
 /* ============ HERO ============ */
 .hero {
@@ -256,16 +300,22 @@ a:hover {
   overflow: hidden;
 }
 
-.hero__bg {
+/* Fond commun hero + sous-pages */
+.hero__bg,
+.pagehero__bg {
   position: absolute;
   inset: 0;
   background-image: url('../images/arriere-plan-ordi.webp');
   background-size: cover;
-  background-position: right top;
   background-repeat: no-repeat;
 }
 
-.hero__fade {
+.hero__bg { background-position: right top; }
+.pagehero__bg { background-size: contain; background-position: right center; }
+
+/* Dégradé commun hero + sous-pages */
+.hero__fade,
+.pagehero__fade {
   position: absolute;
   inset: 0;
   background:
@@ -321,19 +371,12 @@ a:hover {
 }
 
 .hero__h1 {
-  font-family: var(--serif);
   font-size: 3.8rem;
-  font-weight: 400;
   line-height: 1.15;
   color: var(--text);
   margin-bottom: 1.75rem;
   opacity: 0;
   animation: fadeUp 0.8s var(--ease) 0.45s forwards;
-}
-
-.hero__h1 i {
-  font-style: italic;
-  color: var(--accent-soft);
 }
 
 .hero__desc {
@@ -491,9 +534,7 @@ a:hover {
 }
 
 .sec-h2 {
-  font-family: var(--serif);
   font-size: 2.4rem;
-  font-weight: 400;
   color: var(--text);
   line-height: 1.35;
 }
@@ -513,9 +554,7 @@ a:hover {
 }
 
 .about__intro {
-  font-family: var(--serif);
   font-size: 2.8rem;
-  font-weight: 400;
   font-style: italic;
   color: var(--text);
   line-height: 1.2;
@@ -614,9 +653,7 @@ a:hover {
 }
 
 .about__name {
-  font-family: var(--serif);
   font-size: 2rem;
-  font-weight: 400;
   color: var(--text);
   line-height: 1.3;
   margin-bottom: 0.3rem;
@@ -643,9 +680,7 @@ a:hover {
 }
 
 .about__label {
-  font-family: var(--serif);
   font-size: 1.25rem;
-  font-weight: 400;
   font-style: italic;
   color: var(--text);
   margin-top: 3rem;
@@ -693,9 +728,7 @@ a:hover {
 }
 
 .stat__num {
-  font-family: var(--serif);
   font-size: 3.2rem;
-  font-weight: 400;
   color: var(--accent-soft);
   line-height: 1;
   margin-bottom: 0.5rem;
@@ -719,10 +752,6 @@ a:hover {
 .adv__header {
   text-align: center;
   margin-bottom: 4rem;
-}
-
-.adv__header .sec-line {
-  margin: 1.25rem auto 0;
 }
 
 .adv__grid {
@@ -761,7 +790,7 @@ a:hover {
 
 .adv-card:hover .adv-card__content {
   box-shadow:
-    0 1.25rem 3.125rem rgba(0, 0, 0, 0.4),
+    0 1.25rem 3.5rem rgba(0, 0, 0, 0.4),
     0 0 2.5rem rgba(92, 160, 176, 0.06);
 }
 
@@ -785,9 +814,7 @@ a:hover {
 }
 
 .adv-card__num {
-  font-family: var(--serif);
   font-size: 2.8rem;
-  font-weight: 400;
   font-style: italic;
   color: var(--accent);
   opacity: 0.25;
@@ -802,9 +829,7 @@ a:hover {
 }
 
 .adv-card__h {
-  font-family: var(--serif);
   font-size: 1.25rem;
-  font-weight: 400;
   color: var(--text);
   margin-bottom: 0.85rem;
   letter-spacing: 0.04rem;
@@ -815,13 +840,6 @@ a:hover {
   color: var(--accent-soft);
 }
 
-.adv-card__p {
-  font-size: 0.92rem;
-  color: var(--text-dim);
-  line-height: 1.9;
-  font-weight: 300;
-}
-
 /* ============ CTA ============ */
 .cta-block {
   padding: 6rem 0;
@@ -829,16 +847,9 @@ a:hover {
 }
 
 .cta-block__h {
-  font-family: var(--serif);
   font-size: 2.6rem;
-  font-weight: 400;
   color: var(--text);
   line-height: 1.3;
-}
-
-.cta-block__h i {
-  font-style: italic;
-  color: var(--accent-soft);
 }
 
 .cta-block__p {
@@ -895,56 +906,33 @@ a:hover {
   fill: currentColor;
 }
 
-/* ============ Page Hero (sous-pages) ============ */
+/* ============ Page Hero — sous-pages (identique au hero index) ============ */
 .pagehero {
   position: relative;
-  padding: 12rem 0 6rem;
+  height: 100vh;
+  display: flex;
   overflow: hidden;
-}
-
-.pagehero__bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('../images/arriere-plan-ordi.webp');
-  background-size: cover;
-  background-position: right top;
-  background-repeat: no-repeat;
-  opacity: 0.3;
-}
-
-.pagehero__fade {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      var(--dark) 0%,
-      rgba(5, 8, 16, 0.7) 40%,
-      rgba(5, 8, 16, 0.85) 70%,
-      var(--dark) 100%
-    );
 }
 
 .pagehero__inner {
   position: relative;
   z-index: 2;
-  max-width: 46rem;
+  width: 52%;
+  min-width: 19.375rem;
+  max-width: 42rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 3.5rem;
 }
 
 .pagehero__h1 {
-  font-family: var(--serif);
   font-size: 3.2rem;
-  font-weight: 400;
   line-height: 1.2;
   color: var(--text);
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeUp 0.8s var(--ease) 0.3s forwards;
-}
-
-.pagehero__h1 i {
-  font-style: italic;
-  color: var(--accent-soft);
 }
 
 .pagehero__desc {
@@ -967,10 +955,6 @@ a:hover {
   margin-bottom: 4.5rem;
 }
 
-.svc__header .sec-line {
-  margin: 1.25rem auto 0;
-}
-
 .svc__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -985,10 +969,11 @@ a:hover {
   overflow: hidden;
 }
 
-.svc-card:hover {
+.svc-card:hover,
+.pf-card:hover {
   border-color: var(--border-hover);
   box-shadow:
-    0 1.25rem 3.75rem rgba(0, 0, 0, 0.35),
+    0 1.25rem 3.5rem rgba(0, 0, 0, 0.35),
     0 0 2.5rem var(--accent-glow);
 }
 
@@ -1018,9 +1003,7 @@ a:hover {
 }
 
 .svc-card__num {
-  font-family: var(--serif);
   font-size: 2.4rem;
-  font-weight: 400;
   font-style: italic;
   color: var(--accent);
   opacity: 0.2;
@@ -1044,15 +1027,14 @@ a:hover {
   opacity: 0.75;
 }
 
-.svc-card__icon svg {
+.svc-card__icon svg,
+.ct__detail-icon svg {
   width: 100%;
   height: 100%;
 }
 
 .svc-card__h {
-  font-family: var(--serif);
   font-size: 1.35rem;
-  font-weight: 400;
   color: var(--text);
   margin-bottom: 0.85rem;
   transition: color 0.3s;
@@ -1060,14 +1042,6 @@ a:hover {
 
 .svc-card:hover .svc-card__h {
   color: var(--accent-soft);
-}
-
-.svc-card__p {
-  font-size: 0.92rem;
-  color: var(--text-dim);
-  line-height: 1.9;
-  font-weight: 300;
-  margin-bottom: 1.5rem;
 }
 
 .svc-card__list {
@@ -1082,8 +1056,7 @@ a:hover {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-weight: 300;
-  padding: 0.35rem 0;
-  padding-left: 1.25rem;
+  padding: 0.35rem 0 0.35rem 1.25rem;
   position: relative;
   line-height: 1.7;
 }
@@ -1108,10 +1081,6 @@ a:hover {
 .process__header {
   text-align: center;
   margin-bottom: 4.5rem;
-}
-
-.process__header .sec-line {
-  margin: 1.25rem auto 0;
 }
 
 .process__track {
@@ -1165,10 +1134,6 @@ a:hover {
   opacity: 0.7;
 }
 
-.process__body {
-  padding-top: 0;
-}
-
 .process__num {
   font-family: var(--serif);
   font-size: 0.85rem;
@@ -1181,19 +1146,9 @@ a:hover {
 }
 
 .process__h {
-  font-family: var(--serif);
   font-size: 1.3rem;
-  font-weight: 400;
   color: var(--text);
   margin-bottom: 0.6rem;
-}
-
-.process__p {
-  font-size: 0.92rem;
-  color: var(--text-dim);
-  line-height: 1.9;
-  font-weight: 300;
-  max-width: 34rem;
 }
 
 /* ============ Portfolio ============ */
@@ -1204,10 +1159,6 @@ a:hover {
 .pf__header {
   text-align: center;
   margin-bottom: 4.5rem;
-}
-
-.pf__header .sec-line {
-  margin: 1.25rem auto 0;
 }
 
 .pf__grid {
@@ -1222,13 +1173,6 @@ a:hover {
   border: 0.0625rem solid var(--border);
   overflow: hidden;
   transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
-}
-
-.pf-card:hover {
-  border-color: var(--border-hover);
-  box-shadow:
-    0 1.25rem 3.75rem rgba(0, 0, 0, 0.35),
-    0 0 2.5rem var(--accent-glow);
 }
 
 .pf-card--feat {
@@ -1286,11 +1230,7 @@ a:hover {
 .pf-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 40%,
-    rgba(5, 8, 16, 0.3) 100%
-  );
+  background: linear-gradient(180deg, transparent 40%, rgba(5, 8, 16, 0.3) 100%);
   transition: opacity 0.4s var(--ease);
 }
 
@@ -1320,9 +1260,7 @@ a:hover {
 }
 
 .pf-card__h {
-  font-family: var(--serif);
   font-size: 1.4rem;
-  font-weight: 400;
   color: var(--text);
   margin-bottom: 0.75rem;
   transition: color 0.3s;
@@ -1337,10 +1275,6 @@ a:hover {
 }
 
 .pf-card__p {
-  font-size: 0.92rem;
-  color: var(--text-dim);
-  line-height: 1.9;
-  font-weight: 300;
   margin-bottom: 1.25rem;
 }
 
@@ -1422,9 +1356,7 @@ a:hover {
 }
 
 .pf-quality__score {
-  font-family: var(--serif);
   font-size: 2.6rem;
-  font-weight: 400;
   font-style: italic;
   color: var(--accent-soft);
   line-height: 1;
@@ -1445,7 +1377,7 @@ a:hover {
   margin: 0;
 }
 
-/* ============ Notre approche (About Page) ============ */
+/* ============ Notre approche — page ============ */
 .apr {
   padding: 8rem 0 6rem;
 }
@@ -1476,10 +1408,6 @@ a:hover {
   margin-bottom: 4rem;
 }
 
-.apr-values__header .sec-line {
-  margin: 1.25rem auto 0;
-}
-
 .apr-journey {
   padding: 7rem 0;
   border-top: 0.0625rem solid var(--border);
@@ -1490,14 +1418,11 @@ a:hover {
   margin-bottom: 4.5rem;
 }
 
-.apr-journey__header .sec-line {
-  margin: 1.25rem auto 0;
-}
-
 .apr-mission {
   padding: 7rem 0;
   border-top: 0.0625rem solid var(--border);
 }
+
 /* ============ Contact ============ */
 .ct {
   padding: 7rem 0;
@@ -1540,15 +1465,8 @@ a:hover {
   margin-top: 0.15rem;
 }
 
-.ct__detail-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
 .ct__detail-label {
-  font-family: var(--serif);
   font-size: 1rem;
-  font-weight: 400;
   color: var(--text);
   margin-bottom: 0.15rem;
 }
@@ -1608,9 +1526,7 @@ a:hover {
 }
 
 .ct__form-title {
-  font-family: var(--serif);
   font-size: 1.35rem;
-  font-weight: 400;
   color: var(--text);
   margin-bottom: 2.25rem;
 }
@@ -1732,6 +1648,7 @@ a:hover {
   width: 100%;
   height: 100%;
 }
+
 /* ============ Contact CTA Banner ============ */
 .ct-cta {
   padding: 0 0 7rem;
@@ -1781,17 +1698,10 @@ a:hover {
 }
 
 .ct-cta__h {
-  font-family: var(--serif);
   font-size: 2.1rem;
-  font-weight: 400;
   color: var(--text);
   line-height: 1.3;
   margin-bottom: 1.25rem;
-}
-
-.ct-cta__h i {
-  font-style: italic;
-  color: var(--accent-soft);
 }
 
 .ct-cta__p {
@@ -1824,9 +1734,7 @@ a:hover {
 }
 
 .ct-cta__num {
-  font-family: var(--serif);
   font-size: 1.35rem;
-  font-weight: 400;
   font-style: italic;
   color: var(--accent);
   opacity: 0.4;
@@ -1945,9 +1853,7 @@ a:hover {
 }
 
 .legal__h3 {
-  font-family: var(--serif);
   font-size: 1.15rem;
-  font-weight: 400;
   color: var(--text);
   margin-bottom: 0.85rem;
   display: flex;

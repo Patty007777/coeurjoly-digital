@@ -1,12 +1,9 @@
-/* ============ Responsive — Media Queries Only ============ */
+/* ============ Responsive — Media Queries uniquement ============ */
 
-/* ============ Tablet — max 991px ============ */
+/* ============ Tablette — max 991px ============ */
 @media (max-width: 61.9375rem) {
 
-  .topbar {
-    padding: 0.5rem 2rem;
-  }
-
+  .topbar,
   .topbar--solid {
     padding: 0.5rem 2rem;
   }
@@ -106,6 +103,11 @@
     padding: 10rem 0 5rem;
   }
 
+  .pagehero__inner {
+    width: 65%;
+    padding-left: 2rem;
+  }
+
   .pagehero__h1 {
     font-size: 2.6rem;
   }
@@ -193,15 +195,50 @@
   .sm {
     padding: 4rem 0 5rem;
   }
+
+  /* Légal */
+  .legal {
+    padding: 5rem 0 4rem;
+  }
+
+  .legal__nav {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 0.0625rem solid var(--border);
+  }
+
+  .legal__nav-link {
+    border-left: none;
+    border: 0.0625rem solid var(--border);
+    padding: 0.4rem 0.875rem;
+    font-size: 0.75rem;
+  }
+
+  .legal__nav-link:hover,
+  .legal__nav-link--on {
+    padding-left: 0.875rem;
+    border-color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  .legal__nav-sep {
+    display: none;
+  }
+
+  .legal__block + .legal__block {
+    margin-top: 4rem;
+    padding-top: 4rem;
+  }
 }
 
 /* ============ Mobile — max 767px ============ */
 @media (max-width: 47.9375rem) {
 
-  .topbar {
-    padding: 0.5rem 1.25rem;
-  }
-
+  .topbar,
   .topbar--solid {
     padding: 0.5rem 1.25rem;
   }
@@ -324,6 +361,12 @@
     padding: 8rem 0 3.5rem;
   }
 
+  .pagehero__inner {
+    width: 100%;
+    max-width: 100%;
+    padding: 8rem 1.25rem 3rem;
+  }
+
   .pagehero__h1 {
     font-size: 2rem;
   }
@@ -388,10 +431,7 @@
     min-height: auto;
   }
 
-  .pf-card__body {
-    padding: 1.75rem 1.5rem 2rem;
-  }
-
+  .pf-card__body,
   .pf-card--feat .pf-card__body {
     padding: 1.75rem 1.5rem 2rem;
   }
@@ -513,6 +553,31 @@
   .ft__logo img {
     height: 4.5rem;
   }
+
+  /* Légal */
+  .legal {
+    padding: 4rem 0 3rem;
+  }
+
+  .legal__block + .legal__block {
+    margin-top: 3rem;
+    padding-top: 3rem;
+  }
+
+  .legal__nav {
+    gap: 0.375rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .legal__nav-link {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .legal__box {
+    padding: 1.25rem;
+  }
 }
 
 /* ============ Petit mobile — max 480px ============ */
@@ -530,7 +595,8 @@
     font-size: 1.9rem;
   }
 
-  .hero__desc {
+  .hero__desc,
+  .pagehero__desc {
     font-size: 0.85rem;
     line-height: 1.8;
   }
@@ -568,13 +634,12 @@
     padding: 7rem 0 2.5rem;
   }
 
-  .pagehero__h1 {
-    font-size: 1.7rem;
+  .pagehero__inner {
+    padding: 7rem 1rem 2.5rem;
   }
 
-  .pagehero__desc {
-    font-size: 0.85rem;
-    line-height: 1.8;
+  .pagehero__h1 {
+    font-size: 1.7rem;
   }
 
   .svc-card__content {
@@ -589,10 +654,7 @@
     padding: 1.5rem 1.25rem 1.75rem;
   }
 
-  .pf-card__h {
-    font-size: 1.25rem;
-  }
-
+  .pf-card__h,
   .pf-card--feat .pf-card__h {
     font-size: 1.25rem;
   }
@@ -648,71 +710,5 @@
   .sm__submit {
     padding: 0.875rem 1.5rem;
     font-size: 0.72rem;
-  }
-}
-/* ============ Legal — Tablet max 991px ============ */
-@media (max-width: 61.9375rem) {
-  .legal__nav {
-    position: static;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 0.0625rem solid var(--border);
-  }
-
-  .legal__nav-link {
-    border-left: none;
-    border: 0.0625rem solid var(--border);
-    padding: 0.4rem 0.875rem;
-    font-size: 0.75rem;
-  }
-
-  .legal__nav-link:hover,
-  .legal__nav-link--on {
-    padding-left: 0.875rem;
-    border-color: var(--accent);
-    background: var(--accent-glow);
-  }
-
-  .legal__nav-sep {
-    display: none;
-  }
-
-  .legal__block + .legal__block {
-    margin-top: 4rem;
-    padding-top: 4rem;
-  }
-
-  .legal {
-    padding: 5rem 0 4rem;
-  }
-}
-
-/* ============ Legal — Mobile max 767px ============ */
-@media (max-width: 47.9375rem) {
-  .legal {
-    padding: 4rem 0 3rem;
-  }
-
-  .legal__block + .legal__block {
-    margin-top: 3rem;
-    padding-top: 3rem;
-  }
-
-  .legal__nav {
-    gap: 0.375rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.75rem;
-  }
-
-  .legal__nav-link {
-    font-size: 0.72rem;
-    padding: 0.35rem 0.75rem;
-  }
-
-  .legal__box {
-    padding: 1.25rem 1.25rem;
   }
 }
