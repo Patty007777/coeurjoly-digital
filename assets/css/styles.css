@@ -1603,7 +1603,7 @@ a:hover {
 }
 
 .ct__form {
-  background: var(--dark-card);
+  background: #080d18;
   padding: 3rem 2.75rem;
 }
 
@@ -1732,6 +1732,94 @@ a:hover {
   width: 100%;
   height: 100%;
 }
+/* ============ Contact Options ============ */
+.ct-options {
+  padding: 0 0 7rem;
+}
+
+.ct-options__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.ct-options__grid--single {
+  grid-template-columns: 1fr;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.ct-option {
+  background: var(--dark-card);
+  border: 0.0625rem solid var(--border);
+  padding: 3rem 2.5rem;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+
+.ct-option:hover {
+  border-color: var(--border-hover);
+  box-shadow:
+    0 1.25rem 3.75rem rgba(0, 0, 0, 0.35),
+    0 0 2.5rem var(--accent-glow);
+}
+
+.ct-option__icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--accent-soft);
+  opacity: 0.45;
+  margin-bottom: 1.75rem;
+  flex-shrink: 0;
+  transition: opacity 0.3s;
+}
+
+.ct-option:hover .ct-option__icon {
+  opacity: 0.7;
+}
+
+.ct-option__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ct-option__tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.ct-option__h {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 1rem;
+  transition: color 0.3s;
+}
+
+.ct-option__h i {
+  font-style: italic;
+  color: var(--accent-soft);
+}
+
+.ct-option:hover .ct-option__h {
+  color: var(--accent-soft);
+}
+
+.ct-option__p {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.9;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
 /* ============ Mentions légales & Confidentialité ============ */
 .legal {
   padding: 7rem 0 6rem;
