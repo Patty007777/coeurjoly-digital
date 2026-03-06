@@ -175,16 +175,19 @@
     gap: 3rem;
   }
 
-  .ct-options {
-    padding: 0 0 5rem;
+  .ct-cta__wrap {
+    max-width: 100%;
+    grid-template-columns: 1fr;
   }
 
-  .ct-options__grid {
-    gap: 1.25rem;
+  .ct-cta__left {
+    padding: 3rem 2.5rem;
+    border-right: none;
+    border-bottom: 0.0625rem solid var(--border);
   }
 
-  .ct-option {
-    padding: 2.5rem 2rem;
+  .ct-cta__right {
+    padding: 2.5rem 2.5rem;
   }
 
   .sm {
@@ -454,20 +457,20 @@
     font-size: 1.2rem;
   }
 
-  .ct-options {
+  .ct-cta {
     padding: 0 0 4rem;
   }
 
-  .ct-options__grid {
-    grid-template-columns: 1fr;
+  .ct-cta__left {
+    padding: 2.5rem 1.75rem;
   }
 
-  .ct-option {
-    padding: 2.25rem 1.75rem;
+  .ct-cta__right {
+    padding: 2rem 1.75rem 2.5rem;
   }
 
-  .ct-option__h {
-    font-size: 1.35rem;
+  .ct-cta__h {
+    font-size: 1.7rem;
   }
 
   .sm {
