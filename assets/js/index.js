@@ -288,3 +288,48 @@
     });
   });
 })();
+// ============ Contact — gestion du formulaire ============
+(function () {
+  var form = document.querySelector('.ct__form');
+  if (!form) return;
+
+  var btn = form.querySelector('.ct__submit');
+  var btnText = form.querySelector('.ct__submit-text');
+  var btnIcon = form.querySelector('.ct__submit-icon');
+  var status = form.querySelector('.ct__status');
+  var fields = form.querySelectorAll('.ct__field');
+  var formTitle = form.querySelector('.ct__form-title');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function (input) {
+      if (!input.value.trim()) {
+        input.classList.add('ct__input--error');
+        valid = false;
+      } else {
+        input.classList.remove('ct__input--error');
+      }
+    });
+    if (!valid) return;
+
+    // &Eacute;tat d'envoi
+    btn.disabled = true;
+    btn.classList.add('ct__submit--sending');
+    btnText.textContent = 'Envoi en cours\u2026';
+    btnIcon.style.opacity = '0.2';
+
+    // Remplacer le setTimeout par un fetch() vers Formspree ou votre backend
+    setTimeout(function () {
+      if (formTitle) formTitle.style.display = 'none';
+      fields.forEach(function (f) { f.style.display = 'none'; });
+      btn.style.display = 'none';
+      if (status) status.classList.add('ct__status--on');
+    }, 1500);
+  });
+
+  form.addEventListener('input', function (e) {
+    e.target.classList.remove('ct__input--error');
+  });
+})();
