@@ -60,7 +60,7 @@
       <div class="pagehero__inner">
         <p class="hero__tag">Nous joindre</p>
         <h1 id="ph" class="pagehero__h1">Parlons de <i>votre projet</i></h1>
-        <p class="pagehero__desc">Une question, un projet en t&ecirc;te ou simplement envie d&rsquo;en savoir plus&nbsp;? N&rsquo;h&eacute;sitez pas &agrave; nous &eacute;crire. Nous vous r&eacute;pondons dans les 24&nbsp;heures.</p>
+        <p class="pagehero__desc">Une question, un projet en t&ecirc;te ou simplement envie d&rsquo;en savoir plus&nbsp;? Choisissez l&rsquo;option qui vous correspond ci-dessous.</p>
       </div>
       <span class="hero__side" aria-hidden="true">Coeurjoly Digital &mdash; 2026</span>
     </section>
@@ -88,34 +88,42 @@
           <p class="sec-tag">Comment pouvons-nous vous aider&nbsp;?</p>
           <h2 class="sec-h2" id="ct-choose-h">Deux fa&ccedil;ons de <i>nous joindre</i></h2>
           <hr class="sec-line" aria-hidden="true">
-          <p class="ct-choose__intro-desc">Avant de remplir quoi que ce soit, choisissez l&rsquo;option qui correspond &agrave; votre situation. &Ccedil;a vous &eacute;vitera de recommencer et nous permettra de vous r&eacute;pondre de la bonne fa&ccedil;on, d&egrave;s le premier &eacute;change.</p>
+          <p class="ct-choose__intro-desc">Choisissez l&rsquo;option qui correspond &agrave; votre situation. &Ccedil;a nous permettra de vous r&eacute;pondre de la bonne fa&ccedil;on d&egrave;s le premier &eacute;change.</p>
         </div>
-        <div class="ct-choose__grid">
+
+        <div class="ct-choose__grid" role="group" aria-label="Options de contact">
+
           <div class="ct-choose__card rv">
-            <p class="ct-choose__badge">Option 1 &mdash; Message g&eacute;n&eacute;ral</p>
-            <h3 class="ct-choose__h">Vous avez une question ou souhaitez en savoir plus&nbsp;?</h3>
-            <p class="ct-choose__p">Pas encore de projet d&eacute;fini, envie de jaser, besoin d&rsquo;un conseil ou d&rsquo;une information&nbsp;? Le formulaire ci-dessous est fait pour &ccedil;a. Simple et rapide, nous vous r&eacute;pondons en moins de 24&nbsp;heures.</p>
-            <a class="ct-choose__link" href="#ct-form">Acc&eacute;der au formulaire &darr;</a>
+            <button class="ct-choose__card__inner ct-choose__card--btn" type="button" id="ct-opt1" aria-expanded="false" aria-controls="ct-form-panel">
+              <p class="ct-choose__badge">Option 1 &mdash; Message g&eacute;n&eacute;ral</p>
+              <h3 class="ct-choose__h">Une question ou un renseignement&nbsp;?</h3>
+              <p class="ct-choose__p">Pas encore de projet d&eacute;fini, envie de jaser, besoin d&rsquo;un conseil&nbsp;? &Eacute;crivez-nous directement. Nous vous r&eacute;pondons en moins de 24&nbsp;heures.</p>
+              <span class="ct-choose__link" aria-hidden="true">Ouvrir le formulaire &darr;</span>
+            </button>
           </div>
-          <div class="ct-choose__card ct-choose__card--highlight rv">
-            <p class="ct-choose__badge">Option 2 &mdash; Soumission de projet</p>
-            <h3 class="ct-choose__h">Vous avez un projet pr&eacute;cis et voulez une proposition&nbsp;?</h3>
-            <p class="ct-choose__p">Cr&eacute;ation, refonte, SEO, design ou autre&nbsp;? Notre formulaire de soumission vous guide en 4 &eacute;tapes pour nous transmettre tous les d&eacute;tails. Vous recevez une proposition personnalis&eacute;e, sans frais et sans engagement.</p>
-            <a class="ct-choose__link ct-choose__link--accent" href="soumission.html">Acc&eacute;der &agrave; la soumission &rarr;</a>
+
+          <div class="ct-choose__card rv">
+            <a class="ct-choose__card__inner ct-choose__card--highlight" href="soumission.html">
+              <p class="ct-choose__badge">Option 2 &mdash; Soumission de projet</p>
+              <h3 class="ct-choose__h">Un projet pr&eacute;cis &agrave; nous soumettre&nbsp;?</h3>
+              <p class="ct-choose__p">Cr&eacute;ation, refonte, SEO, design ou autre&nbsp;? Notre questionnaire cibl&eacute; nous transmet tout ce qu&rsquo;il nous faut pour vous pr&eacute;parer une proposition personnalis&eacute;e, sans frais et sans engagement. R&eacute;ponse en moins de 48&nbsp;heures.</p>
+              <span class="ct-choose__link ct-choose__link--accent" aria-hidden="true">Acc&eacute;der &agrave; la soumission &rarr;</span>
+            </a>
           </div>
+
         </div>
       </div>
     </section>
 
-    <section class="section--bg" aria-labelledby="cth" id="ct-form">
+    <section class="section--bg" aria-labelledby="cth">
       <div class="container ct">
         <div class="ct__grid">
 
           <div class="ct__info">
             <p class="sec-tag rv">Coordonn&eacute;es</p>
-            <h2 class="sec-h2 rv" id="cth">&Eacute;changeons sur votre vision</h2>
+            <h2 class="sec-h2 rv" id="cth">Nos coordonn&eacute;es</h2>
             <hr class="sec-line rv" aria-hidden="true">
-            <p class="ct__desc rv mt-4">Chaque projet commence par une conversation. Que vous ayez une id&eacute;e pr&eacute;cise ou que vous cherchiez des conseils, nous sommes l&agrave; pour vous accompagner.</p>
+            <p class="ct__desc rv mt-4">Que vous ayez une question simple ou un projet &agrave; discuter, nous sommes disponibles et heureux de vous r&eacute;pondre.</p>
 
             <div class="ct__details">
 
@@ -173,94 +181,63 @@
             </div>
           </div>
 
-          <div class="ct__form-wrap rv">
-            <form class="ct__form" action="#" method="post" novalidate aria-label="Formulaire de contact">
+          <div class="ct__form-panel" id="ct-form-panel" aria-hidden="true">
+            <div class="ct__form-wrap">
+              <form class="ct__form" action="#" method="post" novalidate aria-label="Formulaire de contact">
 
-              <h3 class="ct__form-title">Envoyez-nous un message</h3>
+                <h3 class="ct__form-title">Envoyez-nous un message</h3>
 
-              <div class="ct__field">
-                <label class="ct__label" for="ct-name">Nom complet</label>
-                <input class="ct__input" type="text" id="ct-name" name="name" autocomplete="name" required>
-              </div>
-
-              <div class="ct__field">
-                <label class="ct__label" for="ct-email">Courriel</label>
-                <input class="ct__input" type="email" id="ct-email" name="email" autocomplete="email" required>
-              </div>
-
-              <div class="ct__field">
-                <label class="ct__label" for="ct-phone">T&eacute;l&eacute;phone <span class="ct__optional">(facultatif)</span></label>
-                <input class="ct__input" type="tel" id="ct-phone" name="phone" autocomplete="tel">
-              </div>
-
-              <div class="ct__field">
-                <label class="ct__label" for="ct-subject">Sujet</label>
-                <select class="ct__input ct__select" id="ct-subject" name="subject" required>
-                  <option value="" disabled selected>Choisir un sujet</option>
-                  <option value="creation">Cr&eacute;ation de site web</option>
-                  <option value="refonte">Refonte de site web</option>
-                  <option value="seo">Optimisation SEO</option>
-                  <option value="maintenance">Maintenance et support</option>
-                  <option value="autre">Autre</option>
-                </select>
-              </div>
-
-              <div class="ct__field">
-                <label class="ct__label" for="ct-message">Message</label>
-                <textarea class="ct__input ct__textarea" id="ct-message" name="message" rows="5" required></textarea>
-              </div>
-
-              <button class="ct__submit" type="submit">
-                <span class="ct__submit-text">Envoyer le message</span>
-                <span class="ct__submit-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                </span>
-              </button>
-
-              <div class="ct__status" role="status" aria-live="polite">
-                <div class="ct__status-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <div class="ct__field">
+                  <label class="ct__label" for="ct-name">Nom complet</label>
+                  <input class="ct__input" type="text" id="ct-name" name="name" autocomplete="name" required>
                 </div>
-                <p class="ct__status-title">Message bien re&ccedil;u&nbsp;!</p>
-                <p class="ct__status-msg">Nous vous r&eacute;pondrons dans les 24&nbsp;heures.</p>
-              </div>
 
-            </form>
+                <div class="ct__field">
+                  <label class="ct__label" for="ct-email">Courriel</label>
+                  <input class="ct__input" type="email" id="ct-email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="ct__field">
+                  <label class="ct__label" for="ct-phone">T&eacute;l&eacute;phone <span class="ct__optional">(facultatif)</span></label>
+                  <input class="ct__input" type="tel" id="ct-phone" name="phone" autocomplete="tel">
+                </div>
+
+                <div class="ct__field">
+                  <label class="ct__label" for="ct-subject">Sujet</label>
+                  <select class="ct__input ct__select" id="ct-subject" name="subject" required>
+                    <option value="" disabled selected>Choisir un sujet</option>
+                    <option value="creation">Cr&eacute;ation de site web</option>
+                    <option value="refonte">Refonte de site web</option>
+                    <option value="seo">Optimisation SEO</option>
+                    <option value="maintenance">Maintenance et support</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+
+                <div class="ct__field">
+                  <label class="ct__label" for="ct-message">Message</label>
+                  <textarea class="ct__input ct__textarea" id="ct-message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button class="ct__submit" type="submit">
+                  <span class="ct__submit-text">Envoyer le message</span>
+                  <span class="ct__submit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  </span>
+                </button>
+
+                <div class="ct__status" role="status" aria-live="polite">
+                  <div class="ct__status-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  </div>
+                  <p class="ct__status-title">Message bien re&ccedil;u&nbsp;!</p>
+                  <p class="ct__status-msg">Nous vous r&eacute;pondrons dans les 24&nbsp;heures.</p>
+                </div>
+
+              </form>
+            </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <section class="ct-cta rv" aria-labelledby="ct-cta-h">
-      <div class="container">
-        <div class="ct-cta__wrap">
-          <div class="ct-cta__left">
-            <p class="ct-cta__tag">Pr&ecirc;t &agrave; passer &agrave; l&rsquo;&eacute;tape suivante&nbsp;?</p>
-            <h2 class="ct-cta__h" id="ct-cta-h">Obtenez une soumission <i>sur&nbsp;mesure</i></h2>
-            <p class="ct-cta__p">Notre formulaire de message est id&eacute;al pour les questions g&eacute;n&eacute;rales. Si vous avez un projet concret, notre formulaire de soumission vous permet de nous transmettre tous les d&eacute;tails. Nous vous pr&eacute;parons une proposition taill&eacute;e &agrave; votre r&eacute;alit&eacute;, sans frais et sans engagement.</p>
-            <a class="ct-cta__btn btn-corners" href="soumission.html">Demander une soumission gratuite</a>
-          </div>
-          <div class="ct-cta__right" aria-hidden="true">
-            <ul class="ct-cta__list">
-              <li class="ct-cta__item">
-                <span class="ct-cta__num">01</span>
-                <span class="ct-cta__item-text">4 &eacute;tapes simples, moins de 5&nbsp;minutes</span>
-              </li>
-              <li class="ct-cta__item">
-                <span class="ct-cta__num">02</span>
-                <span class="ct-cta__item-text">R&eacute;ponse personnalis&eacute;e en 48&nbsp;heures</span>
-              </li>
-              <li class="ct-cta__item">
-                <span class="ct-cta__num">03</span>
-                <span class="ct-cta__item-text">Aucun engagement, enti&egrave;rement gratuit</span>
-              </li>
-              <li class="ct-cta__item">
-                <span class="ct-cta__num">04</span>
-                <span class="ct-cta__item-text">Proposition adapt&eacute;e &agrave; votre budget et vos besoins</span>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>

@@ -288,9 +288,25 @@
     });
   });
 })();
-// ============ Contact — gestion du formulaire ============
+// ============ Contact — r&eacute;v&eacute;lation du formulaire + soumission ============
 (function () {
-  var form = document.querySelector('.ct__form');
+  var opt1 = document.getElementById('ct-opt1');
+  var panel = document.getElementById('ct-form-panel');
+  if (!opt1 || !panel) return;
+
+  opt1.addEventListener('click', function () {
+    if (!panel.classList.contains('ct__form-panel--on')) {
+      panel.classList.add('ct__form-panel--on');
+      panel.setAttribute('aria-hidden', 'false');
+      opt1.setAttribute('aria-expanded', 'true');
+      opt1.closest('.ct-choose__card').classList.add('ct-choose__card--selected');
+      setTimeout(function () {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+  });
+
+  var form = panel.querySelector('.ct__form');
   if (!form) return;
 
   var btn = form.querySelector('.ct__submit');
@@ -314,13 +330,11 @@
     });
     if (!valid) return;
 
-    // &Eacute;tat d'envoi
     btn.disabled = true;
     btn.classList.add('ct__submit--sending');
     btnText.textContent = 'Envoi en cours\u2026';
     btnIcon.style.opacity = '0.2';
 
-    // Remplacer le setTimeout par un fetch() vers Formspree ou votre backend
     setTimeout(function () {
       if (formTitle) formTitle.style.display = 'none';
       fields.forEach(function (f) { f.style.display = 'none'; });
