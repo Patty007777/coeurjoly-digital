@@ -38,7 +38,7 @@
 <body>
   <a href="#main-content" class="skip-link visually-hidden-focusable">Aller au contenu principal</a>
 
-  <header class="topbar" role="banner">
+  <header class="topbar">
     <a class="topbar__logo" href="index.html" aria-label="Coeurjoly Digital &ndash; Accueil">
       <img src="assets/images/logo-couleur.webp" alt="Logo Coeurjoly Digital" width="400" height="134" fetchpriority="high">
     </a>
@@ -61,7 +61,7 @@
       <div class="pagehero__inner">
         <p class="hero__tag">Soumission gratuite</p>
         <h1 id="ph" class="pagehero__h1">Votre projet, <i>notre priorit&eacute;</i></h1>
-        <p class="pagehero__desc">Compl&eacute;tez le formulaire ci-dessous. Nous analysons votre demande et vous envoyons une proposition d&eacute;taill&eacute;e dans les 48&nbsp;heures, sans frais et sans engagement.</p>
+        <p class="pagehero__desc">Compl&eacute;ter le formulaire ci-dessous. Nous analysons votre demande et vous envoyons une proposition d&eacute;taill&eacute;e dans les 48&nbsp;heures, sans frais et sans engagement.</p>
       </div>
       <span class="hero__side" aria-hidden="true">Coeurjoly Digital &mdash; 2026</span>
     </section>
@@ -81,255 +81,242 @@
       </div>
     </div>
 
-    <section class="section--bg sm" aria-label="Formulaire de soumission">
-      <div class="container">
+    <section class="section--bg" aria-labelledby="sm-title">
+      <div class="container sm">
+
+        <h2 id="sm-title" class="visually-hidden">Formulaire de soumission</h2>
+
         <div class="sm__wrap rv">
+          <form class="sm__form" action="#" method="post" novalidate id="soumission-form">
 
-          <!-- Cadre principal -->
-          <div class="sm__frame" id="sm-frame">
+            <!-- &Eacute;tape 1 &mdash; Vos coordonn&eacute;es -->
+            <fieldset class="sm__panel sm__panel--on" id="sm-step-1">
+              <legend class="sm__legend">&Agrave; qui avons-nous <i>l&rsquo;honneur&nbsp;?</i></legend>
+              <p class="sm__legend-sub">Vos coordonn&eacute;es de base pour que nous puissions vous transmettre la soumission.</p>
 
-            <form class="sm__form" action="#" method="post" novalidate id="soumission-form">
+              <div class="ct__field">
+                <label class="ct__label" for="sm-name">Pr&eacute;nom et nom <span class="ct__optional" aria-hidden="true">*</span></label>
+                <input class="ct__input" type="text" id="sm-name" name="name" autocomplete="name" required aria-required="true">
+              </div>
 
-              <!-- Section 1 -->
-              <div class="sm__section">
-                <h2 class="sm__sec-h">&Agrave; qui avons-nous <i>l&rsquo;honneur&nbsp;?</i></h2>
-                <p class="sm__sec-sub">Vos coordonn&eacute;es de base pour que nous puissions vous transmettre la soumission.</p>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-email">Courriel <span class="ct__optional" aria-hidden="true">*</span></label>
+                <input class="ct__input" type="email" id="sm-email" name="email" autocomplete="email" required aria-required="true">
+              </div>
 
-                <div class="sm__fields">
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-name">Pr&eacute;nom et nom <span class="ct__optional">*</span></label>
-                    <input class="ct__input" type="text" id="sm-name" name="name" autocomplete="name" required aria-required="true">
-                  </div>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-phone">T&eacute;l&eacute;phone <span class="ct__optional">(facultatif)</span></label>
+                <input class="ct__input" type="tel" id="sm-phone" name="phone" autocomplete="tel">
+              </div>
 
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-email">Courriel <span class="ct__optional">*</span></label>
-                    <input class="ct__input" type="email" id="sm-email" name="email" autocomplete="email" required aria-required="true">
-                  </div>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-company">Nom de votre entreprise <span class="ct__optional">(facultatif)</span></label>
+                <input class="ct__input" type="text" id="sm-company" name="company" autocomplete="organization">
+              </div>
+            </fieldset>
 
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-phone">T&eacute;l&eacute;phone <span class="ct__optional">(facultatif)</span></label>
-                    <input class="ct__input" type="tel" id="sm-phone" name="phone" autocomplete="tel">
-                  </div>
+            <!-- &Eacute;tape 2 &mdash; Votre projet -->
+            <fieldset class="sm__panel" id="sm-step-2">
+              <legend class="sm__legend">Parlez-nous de <i>votre projet</i></legend>
+              <p class="sm__legend-sub">Plus vous nous donnez de d&eacute;tails, plus notre proposition sera pr&eacute;cise.</p>
 
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-company">Nom de votre entreprise <span class="ct__optional">(facultatif)</span></label>
-                    <input class="ct__input" type="text" id="sm-company" name="company" autocomplete="organization">
-                  </div>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-type">Type de site souhait&eacute; <span class="ct__optional" aria-hidden="true">*</span></label>
+                <select class="ct__input ct__select" id="sm-type" name="site_type" required aria-required="true">
+                  <option value="" disabled selected>Choisir un type</option>
+                  <option value="vitrine">Site vitrine (PME, professionnel lib&eacute;ral)</option>
+                  <option value="restaurant">Site restaurant &sol; caf&eacute; &sol; traiteur</option>
+                  <option value="clinique">Site clinique &sol; sant&eacute; &sol; bien-&ecirc;tre</option>
+                  <option value="boutique">Boutique en ligne (e-commerce)</option>
+                  <option value="refonte">Refonte de site existant</option>
+                  <option value="blogue">Blogue ou site de contenu</option>
+                  <option value="maquettes"> Conception de Maquettes seulement </option>
+                  <option value="accompagnement">Accompagnement ou gestion WordPress &sol; Shopify</option>
+                  <option value="autre">Autre &mdash; je pr&eacute;ciserais dans la section Décrivez votre projet.</option>
+                </select>
+              </div>
+
+              <div class="ct__field">
+                <p class="ct__label" id="sm-features-label">Fonctionnalit&eacute;s souhait&eacute;es <span class="ct__optional">(cochez tout ce qui s&rsquo;applique)</span></p>
+                <div class="sm__checks" role="group" aria-labelledby="sm-features-label">
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="formulaire">
+                    <span class="sm__check-text">Formulaire de contact</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="galerie">
+                    <span class="sm__check-text">Galerie photo &sol; portfolio</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="reservation">
+                    <span class="sm__check-text">R&eacute;servation en ligne</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="blogue">
+                    <span class="sm__check-text">Section blogue</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="boutique">
+                    <span class="sm__check-text">Boutique en ligne</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="multilingue">
+                    <span class="sm__check-text">Multilingue (fran&ccedil;ais &sol; anglais)</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="sociaux">
+                    <span class="sm__check-text">Gestions des r&eacute;seaux sociaux</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="seo">
+                    <span class="sm__check-text">Optimisation SEO avanc&eacute;e</span>
+                  </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="blogue">
+                    <span class="sm__check-text">Gestion de l'infolettre</span>
+                   </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="blogue">
+                    <span class="sm__check-text">Développer de mon autonomie sur wordpress ou shopify</span>
+                   </label>
+                   <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="blogue">
+                    <span class="sm__check-text"> Maquettes pour la conception de site web </span>
+                  </label>
+
                 </div>
               </div>
 
-              <div class="sm__divider" aria-hidden="true"></div>
-
-              <!-- Section 2 -->
-              <div class="sm__section">
-                <h2 class="sm__sec-h">Parlez-nous de <i>votre projet</i></h2>
-                <p class="sm__sec-sub">Plus vous nous donnez de d&eacute;tails, plus notre proposition sera pr&eacute;cise.</p>
-
-                <div class="sm__fields">
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-type">Type de site souhait&eacute; <span class="ct__optional">*</span></label>
-                    <select class="ct__input ct__select" id="sm-type" name="site_type" required aria-required="true">
-                      <option value="" disabled selected>Choisir un type</option>
-                      <option value="vitrine">Site vitrine (PME, professionnel lib&eacute;ral)</option>
-                      <option value="restaurant">Site restaurant &sol; caf&eacute; &sol; traiteur</option>
-                      <option value="clinique">Site clinique &sol; sant&eacute; &sol; bien-&ecirc;tre</option>
-                      <option value="boutique">Boutique en ligne (e-commerce)</option>
-                      <option value="refonte">Refonte de site existant</option>
-                      <option value="blogue">Blogue ou site de contenu</option>
-                      <option value="maquettes">Conception de maquettes seulement</option>
-                      <option value="accompagnement">Accompagnement ou gestion WordPress &sol; Shopify</option>
-                      <option value="autre">Autre &mdash; je pr&eacute;ciserai dans la description</option>
-                    </select>
-                  </div>
-
-                  <div class="ct__field">
-                    <p class="ct__label" id="sm-features-label">Fonctionnalit&eacute;s souhait&eacute;es <span class="ct__optional">(cochez tout ce qui s&rsquo;applique)</span></p>
-                    <div class="sm__checks" role="group" aria-labelledby="sm-features-label">
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="formulaire">
-                        <span class="sm__check-text">Formulaire de contact</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="galerie">
-                        <span class="sm__check-text">Galerie photo &sol; portfolio</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="reservation">
-                        <span class="sm__check-text">R&eacute;servation en ligne</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="blogue">
-                        <span class="sm__check-text">Section blogue</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="boutique">
-                        <span class="sm__check-text">Boutique en ligne</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="multilingue">
-                        <span class="sm__check-text">Multilingue (fran&ccedil;ais &sol; anglais)</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="sociaux">
-                        <span class="sm__check-text">Gestion des r&eacute;seaux sociaux</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="seo">
-                        <span class="sm__check-text">Optimisation SEO avanc&eacute;e</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="infolettre">
-                        <span class="sm__check-text">Gestion de l&rsquo;infolettre</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="maquettes-web">
-                        <span class="sm__check-text">Maquettes pour la conception de site web</span>
-                      </label>
-                      <label class="sm__check">
-                        <input type="checkbox" name="features[]" value="autonomie">
-                        <span class="sm__check-text">D&eacute;velopper mon autonomie sur WordPress ou Shopify</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="ct__field">
-                    <p class="ct__label" id="sm-existing-label">Avez-vous d&eacute;j&agrave; un site web&nbsp;? <span class="ct__optional">*</span></p>
-                    <div class="sm__radios" role="group" aria-labelledby="sm-existing-label">
-                      <label class="sm__radio">
-                        <input type="radio" name="has_site" id="site-non" value="non" required aria-required="true">
-                        <span class="sm__radio-text">Non, c&rsquo;est un nouveau site</span>
-                      </label>
-                      <label class="sm__radio">
-                        <input type="radio" name="has_site" id="site-oui" value="oui">
-                        <span class="sm__radio-text">Oui, j&rsquo;en ai un</span>
-                      </label>
-                    </div>
-                    <div class="sm__url-reveal" id="sm-url-reveal">
-                      <label class="ct__label" for="sm-url">URL de votre site actuel</label>
-                      <input class="ct__input" type="url" id="sm-url" name="current_url" placeholder="https://monsite.ca" autocomplete="url">
-                    </div>
-                  </div>
+              <div class="ct__field">
+                <p class="ct__label" id="sm-existing-label">Avez-vous d&eacute;j&agrave; un site web&nbsp;? <span class="ct__optional" aria-hidden="true">*</span></p>
+                <div class="sm__radios" role="group" aria-labelledby="sm-existing-label">
+                  <label class="sm__radio">
+                    <input type="radio" name="has_site" id="site-oui" value="oui" required aria-required="true">
+                    <span class="sm__radio-text">Non, c&rsquo;est un nouveau site </span>
+                  </label>
+                  <label class="sm__radio">
+                    <input type="radio" name="has_site" id="site-non" value="non">
+                    <span class="sm__radio-text">Oui, j&rsquo;en ai un</span>
+                  </label>
+                </div>
+                <div class="sm__url-reveal" id="sm-url-reveal">
+                  <label class="ct__label" for="sm-url">URL de votre site actuel</label>
+                  <input class="ct__input" type="url" id="sm-url" name="current_url" placeholder="https://monsite.ca" autocomplete="url">
                 </div>
               </div>
+            </fieldset>
 
-              <div class="sm__divider" aria-hidden="true"></div>
+            <!-- &Eacute;tape 3 &mdash; Budget et d&eacute;lai -->
+            <fieldset class="sm__panel" id="sm-step-3">
+              <legend class="sm__legend">Budget et <i>calendrier</i></legend>
+              <p class="sm__legend-sub">Ces informations nous aident &agrave; vous proposer la meilleure solution dans votre r&eacute;alit&eacute;.</p>
 
-              <!-- Section 3 -->
-              <div class="sm__section">
-                <h2 class="sm__sec-h">Budget et <i>calendrier</i></h2>
-                <p class="sm__sec-sub">Ces informations nous aident &agrave; vous proposer la meilleure solution dans votre r&eacute;alit&eacute;.</p>
-
-                <div class="sm__fields sm__fields--row">
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-budget">Budget approximatif <span class="ct__optional">*</span></label>
-                    <select class="ct__input ct__select" id="sm-budget" name="budget" required aria-required="true">
-                      <option value="" disabled selected>Choisir une fourchette</option>
-                      <option value="moins-1500">Moins de 1&nbsp;500&nbsp;$</option>
-                      <option value="1500-3000">1&nbsp;500&nbsp;$ &ndash; 3&nbsp;000&nbsp;$</option>
-                      <option value="3000-5000">3&nbsp;000&nbsp;$ &ndash; 5&nbsp;000&nbsp;$</option>
-                      <option value="5000-plus">5&nbsp;000&nbsp;$ et plus</option>
-                      <option value="indetermine">&Agrave; d&eacute;terminer &sol; je ne sais pas encore</option>
-                    </select>
-                  </div>
-
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-delai">D&eacute;lai souhait&eacute; <span class="ct__optional">*</span></label>
-                    <select class="ct__input ct__select" id="sm-delai" name="deadline" required aria-required="true">
-                      <option value="" disabled selected>Choisir un d&eacute;lai</option>
-                      <option value="urgent">D&egrave;s que possible</option>
-                      <option value="1-2mois">Dans 1 &agrave; 2 mois</option>
-                      <option value="3-6mois">Dans 3 &agrave; 6 mois</option>
-                      <option value="flexible">Pas de presse &mdash; je planifie</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="ct__field">
-                  <label class="ct__label" for="sm-source">Comment nous avez-vous d&eacute;couverts&nbsp;? <span class="ct__optional">(facultatif)</span></label>
-                  <select class="ct__input ct__select" id="sm-source" name="source">
-                    <option value="" disabled selected>Choisir une option</option>
-                    <option value="google">Recherche Google</option>
-                    <option value="sociaux">R&eacute;seaux sociaux</option>
-                    <option value="reference">Bouche-&agrave;-oreille &sol; recommandation</option>
-                    <option value="portfolio">Portfolio en ligne</option>
-                    <option value="autre">Autre</option>
-                  </select>
-                </div>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-budget">Budget approximatif <span class="ct__optional" aria-hidden="true">*</span></label>
+                <select class="ct__input ct__select" id="sm-budget" name="budget" required aria-required="true">
+                  <option value="" disabled selected>Choisir une fourchette</option>
+                  <option value="moins-1500">Moins de 1&nbsp;500&nbsp;$</option>
+                  <option value="1500-3000">1&nbsp;500&nbsp;$ &ndash; 3&nbsp;000&nbsp;$</option>
+                  <option value="3000-5000">3&nbsp;000&nbsp;$ &ndash; 5&nbsp;000&nbsp;$</option>
+                  <option value="5000-plus">5&nbsp;000&nbsp;$ et plus</option>
+                  <option value="indetermine">&Agrave; d&eacute;terminer &sol; je ne sais pas encore</option>
+                </select>
               </div>
 
-              <div class="sm__divider" aria-hidden="true"></div>
-
-              <!-- Section 4 -->
-              <div class="sm__section">
-                <h2 class="sm__sec-h">D&eacute;crivez votre <i>vision</i></h2>
-                <p class="sm__sec-sub">Parlez-nous librement de ce que vous avez en t&ecirc;te.</p>
-
-                <div class="sm__fields">
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-description">D&eacute;crivez votre projet <span class="ct__optional">*</span></label>
-                    <textarea
-                      class="ct__input ct__textarea sm__textarea"
-                      id="sm-description"
-                      name="description"
-                      rows="6"
-                      required
-                      aria-required="true"
-                      placeholder="Qui &ecirc;tes-vous&nbsp;? Quelle est votre activit&eacute;&nbsp;? Qu&rsquo;attendez-vous de votre site web&nbsp;?"
-                    ></textarea>
-                  </div>
-
-                  <div class="ct__field">
-                    <label class="ct__label" for="sm-objectifs">Objectifs principaux <span class="ct__optional">(facultatif)</span></label>
-                    <textarea
-                      class="ct__input ct__textarea sm__textarea"
-                      id="sm-objectifs"
-                      name="objectifs"
-                      rows="3"
-                      placeholder="Attirer de nouveaux clients, am&eacute;liorer l&rsquo;image de marque, vendre en ligne&hellip;"
-                    ></textarea>
-                  </div>
-
-                  <div class="ct__field">
-                    <label class="sm__check sm__check--consent">
-                      <input type="checkbox" name="consent" id="sm-consent" required aria-required="true">
-                      <span class="sm__check-text">J&rsquo;accepte que Coeurjoly Digital conserve mes informations pour traiter ma demande. <a href="mentions-legales.html#confidentialite" target="_blank" rel="noopener">Politique de confidentialit&eacute;</a></span>
-                    </label>
-                  </div>
-                </div>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-delai">D&eacute;lai souhait&eacute; <span class="ct__optional" aria-hidden="true">*</span></label>
+                <select class="ct__input ct__select" id="sm-delai" name="deadline" required aria-required="true">
+                  <option value="" disabled selected>Choisir un d&eacute;lai</option>
+                  <option value="urgent">D&egrave;s que possible</option>
+                  <option value="1-2mois">Dans 1 &agrave; 2 mois</option>
+                  <option value="3-6mois">Dans 3 &agrave; 6 mois</option>
+                  <option value="flexible">Pas de presse &mdash; je planifie</option>
+                </select>
               </div>
 
-              <!-- Pied de formulaire -->
-              <div class="sm__footer">
-                <button type="submit" class="sm__submit" id="sm-submit">Envoyer ma demande</button>
-                <p class="sm__footer-note">Proposition d&eacute;taill&eacute;e transmise dans les 48&nbsp;h &mdash; sans frais, sans engagement.</p>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-source">Comment nous avez-vous d&eacute;couverts&nbsp;? <span class="ct__optional">(facultatif)</span></label>
+                <select class="ct__input ct__select" id="sm-source" name="source">
+                  <option value="" disabled selected>Choisir une option</option>
+                  <option value="google">Recherche Google</option>
+                  <option value="sociaux">R&eacute;seaux sociaux</option>
+                  <option value="reference">Bouche-&agrave;-oreille &sol; recommandation</option>
+                  <option value="portfolio">Portfolio en ligne</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <!-- &Eacute;tape 4 &mdash; Description -->
+            <fieldset class="sm__panel" id="sm-step-4">
+              <legend class="sm__legend">D&eacute;crivez votre <i>vision</i></legend>
+              <p class="sm__legend-sub"> Parlez-nous librement de ce que vous avez en t&ecirc;te.</p>
+
+              <div class="ct__field">
+                <label class="ct__label" for="sm-description">D&eacute;crivez votre projet <span class="ct__optional" aria-hidden="true">*</span></label>
+                <textarea
+                  class="ct__input ct__textarea sm__textarea"
+                  id="sm-description"
+                  name="description"
+                  rows="6"
+                  required
+                  aria-required="true"
+                  placeholder="Qui &ecirc;tes-vous&nbsp;? Quelle est votre activit&eacute;&nbsp;? Qu&rsquo;attendez-vous de votre site web&nbsp;?"
+                ></textarea>
               </div>
 
-            </form>
-
-            <!-- Confirmation -->
-            <div class="sm__success" id="sm-success" role="status" aria-live="polite">
-              <div class="sm__success-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div class="ct__field">
+                <label class="ct__label" for="sm-objectifs">Objectifs principaux <span class="ct__optional">(facultatif)</span></label>
+                <textarea
+                  class="ct__input ct__textarea sm__textarea"
+                  id="sm-objectifs"
+                  name="objectifs"
+                  rows="3"
+                  placeholder="Attirer de nouveaux clients, am&eacute;liorer l&rsquo;image de marque, vendre en ligne&hellip;"
+                ></textarea>
               </div>
-              <h2 class="sm__success-h">Demande envoy&eacute;e&nbsp;!</h2>
-              <p class="sm__success-p">Nous avons bien re&ccedil;u votre soumission. Notre &eacute;quipe l&rsquo;examine et vous transmet une proposition personnalis&eacute;e dans les 48&nbsp;heures.</p>
-              <div class="sm__success-recap" id="sm-recap" aria-label="R&eacute;sum&eacute; de votre demande"></div>
-              <a class="btn-corners" href="index.html">Retour &agrave; l&rsquo;accueil</a>
+
+              <div class="ct__field">
+                <label class="sm__check sm__check--consent">
+                  <input type="checkbox" name="consent" id="sm-consent" required aria-required="true">
+                  <span class="sm__check-text">J&rsquo;accepte que Coeurjoly Digital conserve mes informations pour traiter ma demande. <a href="politique-confidentialite.html" target="_blank" rel="noopener">Politique de confidentialit&eacute;</a></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="sm__nav" role="group" aria-label="Navigation du formulaire">
+              <button type="button" class="sm__prev" id="sm-prev" aria-label="&Eacute;tape pr&eacute;c&eacute;dente">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                Pr&eacute;c&eacute;dent
+              </button>
+              <button type="button" class="sm__next" id="sm-next">
+                <span>Suivant</span>
+                <span class="sm__btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </span>
+              </button>
+              <button type="submit" class="sm__submit" id="sm-submit">
+                <span>Envoyer ma demande</span>
+                <span class="sm__btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </span>
+              </button>
             </div>
 
-          </div>
+          </form>
         </div>
+
       </div>
     </section>
 
   </main>
 
-  <footer class="ft" role="contentinfo">
+  <footer class="ft">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-4 mb-2 mb-md-0">
           <a class="me-3" href="mentions-legales.html">Mentions l&eacute;gales</a>
-          <a href="mentions-legales.html#confidentialite">Politique de confidentialit&eacute;</a>
+          <a href="politique-confidentialite.html">Politique de confidentialit&eacute;</a>
         </div>
         <div class="col-md-4 text-md-center mb-2 mb-md-0">
           <p class="ft__copy mb-0">&copy; 2026 Coeurjoly Digital. Tous droits r&eacute;serv&eacute;s.</p>
