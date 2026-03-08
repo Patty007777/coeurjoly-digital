@@ -94,14 +94,27 @@ a:hover {
 }
 
 .rv {
-  opacity: 0;
-  transform: translateY(1.375rem);
-  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease),
+              visibility 0.65s var(--ease);
 }
 
-.rv--on {
+.js .rv {
+  opacity: 0;
+  transform: translateY(1.375rem);
+  visibility: hidden;
+}
+
+.rv--on,
+.js .rv--on {
   opacity: 1;
   transform: translateY(0);
+  visibility: visible;
+}
+
+.js .rv:focus-within {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
 /* ============ Polices serif — base commune ============ */
@@ -474,7 +487,7 @@ a:hover {
   right: 3.5rem;
   bottom: 3rem;
   z-index: 2;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -525,7 +538,7 @@ a:hover {
 }
 
 .sec-tag {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3125rem;
   text-transform: uppercase;
@@ -966,6 +979,7 @@ a:hover {
 
 .callout-ac__link::after {
   content: ' \2192';
+  font-size: 2em;
 }
 
 /* ============ CTA ============ */
@@ -1389,7 +1403,7 @@ a:hover {
 
 .pf-card__cat {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
@@ -1451,6 +1465,7 @@ a:hover {
 
 .pf-card__arrow span {
   display: inline-block;
+  font-size: 2em;
   transition: transform 0.3s var(--ease);
 }
 
@@ -1635,7 +1650,7 @@ a:hover {
 }
 
 .ct__social-label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
@@ -1817,7 +1832,7 @@ a:hover {
 }
 
 .ct-cta__tag {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3125rem;
   text-transform: uppercase;
@@ -2016,7 +2031,7 @@ a:hover {
   height: 0.45rem;
   border-radius: 50%;
   border: none;
-  background: rgba(92, 160, 176, 0.35);
+  background: rgba(92, 160, 176, 0.65);
   cursor: pointer;
   padding: 0;
   transition: background 0.3s, transform 0.3s;
@@ -2046,7 +2061,7 @@ a:hover {
 }
 
 .legal__nav-label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3125rem;
   text-transform: uppercase;
@@ -2246,7 +2261,7 @@ a:hover {
 .sec-divider__label {
   position: relative;
   padding: 0.5rem 1.75rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.28rem;
   text-transform: uppercase;
@@ -2271,7 +2286,7 @@ a:hover {
 }
 
 .ac-label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3125rem;
   text-transform: uppercase;
@@ -2367,7 +2382,7 @@ a:hover {
 }
 
 .ac-card__badge {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.15rem;
   text-transform: uppercase;
@@ -2513,7 +2528,7 @@ a:hover {
 }
 
 .ct-choose__badge {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3125rem;
   text-transform: uppercase;
@@ -2557,6 +2572,11 @@ a:hover {
 
 .ct-choose__link--accent:hover {
   color: var(--text);
+}
+
+.arrow-lg {
+  font-size: 1.25em;
+  line-height: 1;
 }
 
 /* ============ Contact — &Eacute;tats du formulaire ============ */

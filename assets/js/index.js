@@ -1,4 +1,5 @@
 (function () {
+  document.documentElement.classList.add('js');
   var tb = document.querySelector('.topbar');
   var toggle = document.querySelector('.topbar__toggle');
   var nav = document.querySelector('.topbar__nav');
