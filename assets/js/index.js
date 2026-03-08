@@ -97,119 +97,99 @@
   targets.forEach(function (t) { ob.observe(t.el); });
 })();
 
-// ============ Soumission — Formulaire multi-&eacute;tapes ============
+// ============ Soumission ============
 (function () {
   var form = document.getElementById('soumission-form');
   if (!form) return;
 
-  var panels = form.querySelectorAll('.sm__panel');
-  var steps = document.querySelectorAll('.sm__step');
-  var progress = document.getElementById('sm-progress');
-  var btnPrev = document.getElementById('sm-prev');
-  var btnNext = document.getElementById('sm-next');
-  var btnSubmit = document.getElementById('sm-submit');
-  var current = 0;
-
-  function showStep(n) {
-    panels.forEach(function (p, i) {
-      p.classList.toggle('sm__panel--on', i === n);
-    });
-
-    steps.forEach(function (s, i) {
-      s.classList.toggle('sm__step--on', i === n);
-      s.classList.toggle('sm__step--done', i < n);
-      if (i === n) {
-        s.setAttribute('aria-current', 'step');
-      } else {
-        s.removeAttribute('aria-current');
-      }
-    });
-
-    if (progress) {
-      progress.setAttribute('aria-valuenow', n + 1);
-    }
-
-    var isFirst = n === 0;
-    var isLast = n === panels.length - 1;
-
-    btnPrev.style.display = isFirst ? 'none' : 'inline-flex';
-    btnNext.style.display = isLast ? 'none' : 'inline-flex';
-    btnSubmit.style.display = isLast ? 'inline-flex' : 'none';
-
-    current = n;
-  }
-
-  function validatePanel(panel) {
-    var inputs = panel.querySelectorAll('[required]');
-    var valid = true;
-
-    inputs.forEach(function (input) {
-      var isEmpty = false;
-
-      if (input.type === 'checkbox' || input.type === 'radio') {
-        var group = panel.querySelectorAll('input[name="' + input.name + '"]');
-        var checked = Array.prototype.some.call(group, function (i) { return i.checked; });
-        if (!checked) {
-          isEmpty = true;
-        }
-      } else {
-        isEmpty = !input.value.trim();
-      }
-
-      if (isEmpty) {
-        input.classList.add('sm__input--error');
-        valid = false;
-      } else {
-        input.classList.remove('sm__input--error');
-      }
-    });
-
-    return valid;
-  }
-
-  btnNext.addEventListener('click', function () {
-    if (validatePanel(panels[current])) {
-      showStep(current + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-
-  btnPrev.addEventListener('click', function () {
-    showStep(current - 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Retirer l'erreur au premier keystroke
-  form.addEventListener('input', function (e) {
-    if (e.target.classList.contains('sm__input--error')) {
-      e.target.classList.remove('sm__input--error');
-    }
-  });
-
-  form.addEventListener('change', function (e) {
-    if (e.target.classList.contains('sm__input--error')) {
-      e.target.classList.remove('sm__input--error');
-    }
-  });
-
-  // R&eacute;v&eacute;lation du champ URL selon le bouton radio
+  var success = document.getElementById('sm-success');
+  var recap = document.getElementById('sm-recap');
   var radioOui = document.getElementById('site-oui');
   var radioNon = document.getElementById('site-non');
   var urlReveal = document.getElementById('sm-url-reveal');
 
+  // R&eacute;v&eacute;lation du champ URL
   if (radioOui && urlReveal) {
     radioOui.addEventListener('change', function () {
       urlReveal.classList.add('sm__url-reveal--on');
     });
   }
-
   if (radioNon && urlReveal) {
     radioNon.addEventListener('change', function () {
       urlReveal.classList.remove('sm__url-reveal--on');
     });
   }
 
-  showStep(0);
+  // Retirer l'&eacute;tat d'erreur au keystroke
+  form.addEventListener('input', function (e) {
+    e.target.classList.remove('sm__input--error');
+  });
+  form.addEventListener('change', function (e) {
+    e.target.classList.remove('sm__input--error');
+  });
+
+  // Soumission
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function (input) {
+      var empty = false;
+      if (input.type === 'checkbox' || input.type === 'radio') {
+        var group = form.querySelectorAll('input[name="' + input.name + '"]');
+        var checked = Array.prototype.some.call(group, function (i) { return i.checked; });
+        if (!checked) empty = true;
+      } else {
+        empty = !input.value.trim();
+      }
+      if (empty) {
+        input.classList.add('sm__input--error');
+        valid = false;
+      }
+    });
+
+    if (!valid) {
+      var first = form.querySelector('.sm__input--error');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Construire le r&eacute;sum&eacute;
+    var name = form.elements['name'].value.trim();
+    var email = form.elements['email'].value.trim();
+    var typeEl = form.elements['site_type'];
+    var siteType = typeEl.options[typeEl.selectedIndex].text;
+    var hasSite = form.querySelector('input[name="has_site"]:checked');
+    var hasSiteText = hasSite ? (hasSite.value === 'oui' ? 'Oui' : 'Non') : '';
+    var budgetEl = form.elements['budget'];
+    var budget = budgetEl.options[budgetEl.selectedIndex].text;
+    var delaiEl = form.elements['deadline'];
+    var delai = delaiEl.options[delaiEl.selectedIndex].text;
+
+    var checked = form.querySelectorAll('input[name="features[]"]:checked');
+    var features = [];
+    checked.forEach(function (cb) {
+      features.push(cb.parentNode.querySelector('.sm__check-text').textContent.trim());
+    });
+
+    var html = '';
+    html += '<p><strong>Nom&nbsp;:</strong> ' + name + '</p>';
+    html += '<p><strong>Courriel&nbsp;:</strong> ' + email + '</p>';
+    html += '<p><strong>Type de projet&nbsp;:</strong> ' + siteType + '</p>';
+    if (hasSiteText) html += '<p><strong>Site existant&nbsp;:</strong> ' + hasSiteText + '</p>';
+    html += '<p><strong>Budget&nbsp;:</strong> ' + budget + '</p>';
+    html += '<p><strong>D&eacute;lai&nbsp;:</strong> ' + delai + '</p>';
+    if (features.length) html += '<p><strong>Fonctionnalit&eacute;s&nbsp;:</strong> ' + features.join(', ') + '</p>';
+
+    if (recap) recap.innerHTML = html;
+
+    // Afficher la confirmation
+    form.style.display = 'none';
+    if (success) {
+      success.classList.add('sm__success--on');
+      success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 })();
 
 // ============ Carrousel témoignages ============
