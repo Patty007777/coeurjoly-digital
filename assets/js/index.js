@@ -98,18 +98,95 @@
   targets.forEach(function (t) { ob.observe(t.el); });
 })();
 
-// ============ Soumission ============
+// ============ Soumission multi-&eacute;tapes ============
 (function () {
   var form = document.getElementById('soumission-form');
   if (!form) return;
 
-  var success = document.getElementById('sm-success');
-  var recap = document.getElementById('sm-recap');
-  var radioOui = document.getElementById('site-oui');
-  var radioNon = document.getElementById('site-non');
-  var urlReveal = document.getElementById('sm-url-reveal');
+  var success      = document.getElementById('sm-success');
+  var recap        = document.getElementById('sm-recap');
+  var radioOui     = document.getElementById('site-oui');
+  var radioNon     = document.getElementById('site-non');
+  var urlReveal    = document.getElementById('sm-url-reveal');
+  var btnPrev      = document.getElementById('sm-prev');
+  var btnNext      = document.getElementById('sm-next');
+  var btnSubmit    = document.getElementById('sm-submit');
+  var stepEls      = document.querySelectorAll('.sm__step[data-step]');
+  var emailError   = document.getElementById('sm-email-error');
+  var consentError = document.getElementById('sm-consent-error');
 
-  // R&eacute;v&eacute;lation du champ URL
+  var total   = 4;
+  var current = 1;
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function getPanel(n) {
+    return document.getElementById('sm-step-' + n);
+  }
+
+  function updateProgress() {
+    stepEls.forEach(function (s) {
+      var n = parseInt(s.getAttribute('data-step'), 10);
+      s.classList.toggle('sm__step--on', n <= current);
+    });
+  }
+
+  function showStep(n) {
+    for (var i = 1; i <= total; i++) {
+      var p = getPanel(i);
+      if (p) p.classList.toggle('sm__panel--on', i === n);
+    }
+    if (btnPrev)   btnPrev.style.visibility = n === 1 ? 'hidden' : 'visible';
+    if (btnNext)   btnNext.style.display    = n < total ? 'inline-flex' : 'none';
+    if (btnSubmit) btnSubmit.style.display  = n === total ? 'inline-flex' : 'none';
+    updateProgress();
+  }
+
+  function showMsg(el, on) {
+    if (el) el.classList.toggle('sm__error-msg--on', on);
+  }
+
+  function validatePanel(n) {
+    var panel = getPanel(n);
+    if (!panel) return true;
+    var valid = true;
+
+    panel.querySelectorAll('[required]').forEach(function (input) {
+      var empty = false;
+
+      if (input.type === 'checkbox') {
+        if (!input.checked) empty = true;
+        if (input.id === 'sm-consent') showMsg(consentError, empty);
+      } else if (input.type === 'radio') {
+        var group = panel.querySelectorAll('input[name="' + input.name + '"]');
+        var anyChecked = Array.prototype.some.call(group, function (i) { return i.checked; });
+        if (!anyChecked) empty = true;
+      } else {
+        empty = !input.value.trim();
+      }
+
+      if (input.type === 'email' && !empty) {
+        if (!emailRe.test(input.value.trim())) {
+          input.classList.add('sm__input--error');
+          showMsg(emailError, true);
+          valid = false;
+          return;
+        }
+      }
+
+      if (empty) {
+        input.classList.add('sm__input--error');
+        valid = false;
+      }
+    });
+
+    if (!valid) {
+      var first = panel.querySelector('.sm__input--error, .sm__error-msg--on');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return valid;
+  }
+
+  // R&eacute;v&eacute;lation du champ URL (Oui, j&rsquo;en ai un)
   if (radioOui && urlReveal) {
     radioOui.addEventListener('change', function () {
       urlReveal.classList.add('sm__url-reveal--on');
@@ -121,76 +198,79 @@
     });
   }
 
-  // Retirer l'&eacute;tat d'erreur au keystroke
+  // Effacer les erreurs &agrave; la saisie
   form.addEventListener('input', function (e) {
     e.target.classList.remove('sm__input--error');
+    if (e.target.id === 'sm-email') showMsg(emailError, false);
   });
   form.addEventListener('change', function (e) {
     e.target.classList.remove('sm__input--error');
+    if (e.target.id === 'sm-consent') showMsg(consentError, false);
   });
 
-  // Soumission
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  // Bouton Suivant
+  if (btnNext) {
+    btnNext.addEventListener('click', function () {
+      if (!validatePanel(current)) return;
+      current++;
+      showStep(current);
+      form.closest('.sm__wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
-    var valid = true;
-    form.querySelectorAll('[required]').forEach(function (input) {
-      var empty = false;
-      if (input.type === 'checkbox' || input.type === 'radio') {
-        var group = form.querySelectorAll('input[name="' + input.name + '"]');
-        var checked = Array.prototype.some.call(group, function (i) { return i.checked; });
-        if (!checked) empty = true;
-      } else {
-        empty = !input.value.trim();
-      }
-      if (empty) {
-        input.classList.add('sm__input--error');
-        valid = false;
+  // Bouton Pr&eacute;c&eacute;dent
+  if (btnPrev) {
+    btnPrev.addEventListener('click', function () {
+      if (current > 1) {
+        current--;
+        showStep(current);
+        form.closest('.sm__wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
+  }
 
-    if (!valid) {
-      var first = form.querySelector('.sm__input--error');
-      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
+  // Soumission finale
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validatePanel(current)) return;
 
-    // Construire le r&eacute;sum&eacute;
-    var name = form.elements['name'].value.trim();
-    var email = form.elements['email'].value.trim();
-    var typeEl = form.elements['site_type'];
+    var name     = form.elements['name'].value.trim();
+    var email    = form.elements['email'].value.trim();
+    var typeEl   = form.elements['site_type'];
     var siteType = typeEl.options[typeEl.selectedIndex].text;
-    var hasSite = form.querySelector('input[name="has_site"]:checked');
-    var hasSiteText = hasSite ? (hasSite.value === 'oui' ? 'Oui' : 'Non') : '';
     var budgetEl = form.elements['budget'];
-    var budget = budgetEl.options[budgetEl.selectedIndex].text;
-    var delaiEl = form.elements['deadline'];
-    var delai = delaiEl.options[delaiEl.selectedIndex].text;
+    var budget   = budgetEl.options[budgetEl.selectedIndex].text;
+    var delaiEl  = form.elements['deadline'];
+    var delai    = delaiEl.options[delaiEl.selectedIndex].text;
 
-    var checked = form.querySelectorAll('input[name="features[]"]:checked');
+    var checked  = form.querySelectorAll('input[name="features[]"]:checked');
     var features = [];
     checked.forEach(function (cb) {
-      features.push(cb.parentNode.querySelector('.sm__check-text').textContent.trim());
+      var label = cb.parentNode.querySelector('.sm__check-text');
+      if (label) features.push(label.textContent.trim());
     });
 
     var html = '';
     html += '<p><strong>Nom&nbsp;:</strong> ' + name + '</p>';
     html += '<p><strong>Courriel&nbsp;:</strong> ' + email + '</p>';
     html += '<p><strong>Type de projet&nbsp;:</strong> ' + siteType + '</p>';
-    if (hasSiteText) html += '<p><strong>Site existant&nbsp;:</strong> ' + hasSiteText + '</p>';
     html += '<p><strong>Budget&nbsp;:</strong> ' + budget + '</p>';
     html += '<p><strong>D&eacute;lai&nbsp;:</strong> ' + delai + '</p>';
-    if (features.length) html += '<p><strong>Fonctionnalit&eacute;s&nbsp;:</strong> ' + features.join(', ') + '</p>';
+    if (features.length) {
+      html += '<p><strong>Fonctionnalit&eacute;s&nbsp;:</strong> ' + features.join(', ') + '</p>';
+    }
 
     if (recap) recap.innerHTML = html;
 
-    // Afficher la confirmation
     form.style.display = 'none';
     if (success) {
       success.classList.add('sm__success--on');
       success.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+
+  // Initialisation
+  showStep(1);
 })();
 
 // ============ Carrousel témoignages ============

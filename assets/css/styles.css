@@ -94,8 +94,7 @@ a:hover {
 }
 
 .rv {
-  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease),
-              visibility 0.65s var(--ease);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
 }
 
 .js .rv {
@@ -106,12 +105,6 @@ a:hover {
 
 .rv--on,
 .js .rv--on {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.js .rv:focus-within {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
@@ -2647,4 +2640,360 @@ a:hover {
   max-height: 60rem;
   opacity: 1;
   pointer-events: auto;
+}
+/* ============ Soumission — formulaire multi-étapes ============ */
+.sm {
+  padding: 5rem 0 7rem;
+}
+
+.sm__wrap {
+  position: relative;
+  max-width: 52rem;
+  margin: 0 auto;
+  border: 0.0625rem solid var(--accent);
+  overflow: hidden;
+}
+
+.sm__form {
+  background: var(--dark-card);
+  padding: 3.5rem 4rem 4rem;
+}
+
+/* Barre de progression */
+.sm__progress {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.sm__step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s;
+  flex-shrink: 0;
+}
+
+.sm__step--on {
+  color: var(--accent-soft);
+}
+
+.sm__step-num {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.0625rem solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  transition: border-color 0.3s, background 0.3s, color 0.3s;
+  flex-shrink: 0;
+}
+
+.sm__step--on .sm__step-num {
+  border-color: var(--accent);
+  background: rgba(92, 160, 176, 0.1);
+  color: var(--accent);
+}
+
+.sm__step-label {
+  display: none;
+}
+
+.sm__step-line {
+  flex: 1;
+  height: 0.0625rem;
+  background: var(--border);
+  margin: 0 0.5rem;
+}
+
+/* Panneaux d'étapes */
+.sm__panel {
+  display: none;
+}
+
+.sm__panel--on {
+  display: block;
+}
+
+/* Légende */
+.sm__legend {
+  font-size: 1.75rem;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+
+.sm__legend i {
+  font-style: italic;
+  color: var(--accent-soft);
+}
+
+.sm__legend-sub {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+}
+
+/* Cases à cocher */
+.sm__checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.sm__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  cursor: pointer;
+}
+
+.sm__check input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.2rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.sm__check-text {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.sm__check--consent {
+  margin-top: 1.5rem;
+  align-items: flex-start;
+}
+
+.sm__check--consent .sm__check-text {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* Boutons radio */
+.sm__radios {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.sm__radio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.sm__radio input[type="radio"] {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.sm__radio-text {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-weight: 300;
+}
+
+/* Révélation URL */
+.sm__url-reveal {
+  display: none;
+  margin-top: 1.25rem;
+}
+
+.sm__url-reveal--on {
+  display: block;
+}
+
+/* Textarea */
+.sm__textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+/* Erreur de saisie */
+.sm__input--error {
+  border-color: #c0504d !important;
+  box-shadow: 0 0 0 0.1875rem rgba(192, 80, 77, 0.08) !important;
+}
+
+.sm__error-msg {
+  display: none;
+  font-size: 0.8rem;
+  color: #e07a78;
+  margin-top: 0.375rem;
+  font-weight: 400;
+}
+
+.sm__error-msg--on {
+  display: block;
+}
+
+/* Navigation multi-étapes */
+.sm__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 0.0625rem solid var(--border);
+}
+
+.sm__prev {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+.sm__prev:hover {
+  color: var(--text);
+}
+
+.sm__prev svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.sm__next,
+.sm__submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  background: transparent;
+  border: 0.0625rem solid var(--accent);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s var(--ease);
+  z-index: 1;
+}
+
+.sm__next::before,
+.sm__submit::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: var(--accent);
+  transition: height 0.35s var(--ease);
+  z-index: -1;
+}
+
+.sm__next:hover,
+.sm__submit:hover {
+  color: var(--dark);
+}
+
+.sm__next:hover::before,
+.sm__submit:hover::before {
+  height: 100%;
+}
+
+.sm__btn-icon {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sm__btn-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Confirmation */
+.sm__success {
+  display: none;
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--dark-card);
+}
+
+.sm__success--on {
+  display: block;
+}
+
+.sm__success-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--accent);
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sm__success-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sm__success-h {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.sm__success-p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.9;
+  max-width: 30rem;
+  margin: 0 auto 2rem;
+}
+
+.sm__recap {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 2;
+  max-width: 24rem;
+  margin: 0 auto;
+  text-align: left;
+  border-top: 0.0625rem solid var(--border);
+  padding-top: 1.5rem;
 }

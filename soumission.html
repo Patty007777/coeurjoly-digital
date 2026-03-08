@@ -89,6 +89,24 @@
         <div class="sm__wrap rv">
           <form class="sm__form" action="#" method="post" novalidate id="soumission-form">
 
+            <div class="sm__progress" aria-label="&Eacute;tapes du formulaire" role="list">
+              <div class="sm__step sm__step--on" role="listitem" data-step="1">
+                <span class="sm__step-num">1</span>
+              </div>
+              <div class="sm__step-line" aria-hidden="true"></div>
+              <div class="sm__step" role="listitem" data-step="2">
+                <span class="sm__step-num">2</span>
+              </div>
+              <div class="sm__step-line" aria-hidden="true"></div>
+              <div class="sm__step" role="listitem" data-step="3">
+                <span class="sm__step-num">3</span>
+              </div>
+              <div class="sm__step-line" aria-hidden="true"></div>
+              <div class="sm__step" role="listitem" data-step="4">
+                <span class="sm__step-num">4</span>
+              </div>
+            </div>
+
             <!-- &Eacute;tape 1 &mdash; Vos coordonn&eacute;es -->
             <fieldset class="sm__panel sm__panel--on" id="sm-step-1">
               <legend class="sm__legend">&Agrave; qui avons-nous <i>l&rsquo;honneur&nbsp;?</i></legend>
@@ -101,7 +119,8 @@
 
               <div class="ct__field">
                 <label class="ct__label" for="sm-email">Courriel <span class="ct__optional" aria-hidden="true">*</span></label>
-                <input class="ct__input" type="email" id="sm-email" name="email" autocomplete="email" required aria-required="true">
+                <input class="ct__input" type="email" id="sm-email" name="email" autocomplete="email" required aria-required="true" aria-describedby="sm-email-error">
+                <p class="sm__error-msg" id="sm-email-error" role="alert">Le format du courriel n&rsquo;est pas valide.</p>
               </div>
 
               <div class="ct__field">
@@ -172,17 +191,17 @@
                     <span class="sm__check-text">Optimisation SEO avanc&eacute;e</span>
                   </label>
                   <label class="sm__check">
-                    <input type="checkbox" name="features[]" value="blogue">
-                    <span class="sm__check-text">Gestion de l'infolettre</span>
+                    <input type="checkbox" name="features[]" value="infolettre">
+                    <span class="sm__check-text">Gestion de l&rsquo;infolettre</span>
                    </label>
                   <label class="sm__check">
-                    <input type="checkbox" name="features[]" value="blogue">
-                    <span class="sm__check-text">Développer de mon autonomie sur wordpress ou shopify</span>
-                   </label>
-                   <label class="sm__check">
-                    <input type="checkbox" name="features[]" value="blogue">
-                    <span class="sm__check-text"> Maquettes pour la conception de site web </span>
+                    <input type="checkbox" name="features[]" value="maquettes">
+                    <span class="sm__check-text">Maquettes pour la conception de site web</span>
                   </label>
+                  <label class="sm__check">
+                    <input type="checkbox" name="features[]" value="autonomie">
+                    <span class="sm__check-text">D&eacute;velopper mon autonomie sur WordPress ou Shopify</span>
+                   </label>
 
                 </div>
               </div>
@@ -191,11 +210,11 @@
                 <p class="ct__label" id="sm-existing-label">Avez-vous d&eacute;j&agrave; un site web&nbsp;? <span class="ct__optional" aria-hidden="true">*</span></p>
                 <div class="sm__radios" role="group" aria-labelledby="sm-existing-label">
                   <label class="sm__radio">
-                    <input type="radio" name="has_site" id="site-oui" value="oui" required aria-required="true">
-                    <span class="sm__radio-text">Non, c&rsquo;est un nouveau site </span>
+                    <input type="radio" name="has_site" id="site-non" value="non" required aria-required="true">
+                    <span class="sm__radio-text">Non, c&rsquo;est un nouveau site</span>
                   </label>
                   <label class="sm__radio">
-                    <input type="radio" name="has_site" id="site-non" value="non">
+                    <input type="radio" name="has_site" id="site-oui" value="oui">
                     <span class="sm__radio-text">Oui, j&rsquo;en ai un</span>
                   </label>
                 </div>
@@ -278,9 +297,10 @@
 
               <div class="ct__field">
                 <label class="sm__check sm__check--consent">
-                  <input type="checkbox" name="consent" id="sm-consent" required aria-required="true">
+                  <input type="checkbox" name="consent" id="sm-consent" required aria-required="true" aria-describedby="sm-consent-error">
                   <span class="sm__check-text">J&rsquo;accepte que Coeurjoly Digital conserve mes informations pour traiter ma demande. <a href="politique-confidentialite.html" target="_blank" rel="noopener">Politique de confidentialit&eacute;</a></span>
                 </label>
+                <p class="sm__error-msg" id="sm-consent-error" role="alert">Vous devez cocher cette case pour continuer.</p>
               </div>
             </fieldset>
 
@@ -304,6 +324,16 @@
             </div>
 
           </form>
+
+          <div class="sm__success" id="sm-success" role="status" aria-live="polite">
+            <div class="sm__success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2 class="sm__success-h">Demande re&ccedil;ue&nbsp;!</h2>
+            <p class="sm__success-p">Merci pour votre confiance. Nous analysons votre demande et vous revenons dans les 48&nbsp;heures avec une proposition sur mesure.</p>
+            <div class="sm__recap" id="sm-recap"></div>
+          </div>
+
         </div>
 
       </div>
